@@ -47,14 +47,14 @@
 
 // OBJECTS
 
-let obj = {
-  "name": 'some name',
-  property: 3.14
-};
+// let obj = {
+//   "name": 'some name',
+//   property: 3.14
+// };
 
-for (const prop in obj) {
-  console.log(`${prop}=${obj[prop]}`);
-}
+// for (const prop in obj) {
+//   console.log(`${prop}=${obj[prop]}`);
+// }
 
 // let newobj = {
 //   'nested': {

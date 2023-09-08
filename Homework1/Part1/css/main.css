@@ -1,0 +1,74 @@
+* {
+    font-family: 'Nunito', sans-serif;
+}
+
+.section-header {
+    font-family: 'Dosis', sans-serif;
+    font-size: x-large;
+}
+
+header {
+    font-family: 'Dosis', sans-serif;
+    font-size: xxx-large;
+    text-align: center;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-item {
+    padding: 10px;
+    flex-basis: 100;
+}
+
+.hover-button {
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Add a smooth transition effect */
+    border-radius: 10px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: black;
+}
+
+.nav-link:visited {
+    color: black; /* Set the visited link color to the same color (blue) */
+}
+
+.hover-button:hover {
+    background-color: rgb(228,228,228);
+}
+
+#editor {
+    text-align: center;
+}
+
+.custom-hr {
+    width: 50%;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-flow: dense;
+    grid-gap: 10px; /* Adds 10px gap between rows and columns */
+    justify-content: center; /* Horizontally centers items */
+    /* align-items: center; Vertically centers items */
+}
+
+.grid-item {
+    padding: 20px;
+    /* border: 1px solid #333; */
+    text-align: center;
+}
+
+.container {
+    max-width: 1000px; /* Set your desired maximum width */
+    margin: 0 auto; /* Center the container horizontally on the page */
+}
+  
