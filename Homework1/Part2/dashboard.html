@@ -21,9 +21,9 @@
 
     <div>
       <!-- User Account -->
-      <div class="user-account">
-        <img src="./images/face.jpg" alt="logo" id="profile">
-        <div>
+      <div class="user-account flex-profile-container">
+        <img src="./images/face.jpg" alt="logo" id="profile" class="flex-profile-item">
+        <div class="flex-profile-item">
           <p>Stu Dent</p>
           <p>stu.dent@ncsu.edu</p>
         </div>
@@ -91,11 +91,11 @@
   <!-- End Sidebar -->
 
   <!-- Start Content -->
-  <section class="content">
+  <section class="content content-grid-container">
     <!-- Start header -->
-    <header>
+    <header class="top-section">
       <!-- left section -->
-      <div>
+      <div class="left-header">
         <span>Greetings Stu Dent!</span>
 
         <!-- Search form -->
@@ -108,16 +108,16 @@
       <!-- end left section -->
 
       <!-- Right section -->
-      <div>
+      <div class="right-header flex-dropdown-container">
         <!-- Account dropdown -->
-        <div>
-          <button type="button">
+        <div class="dropdown">
+          <button type="button" class="dropdown-button">
             <img src="./images/face.jpg" alt="user">
             <span>Stu Dent</span>
           </button>
 
           <div tabindex="-1">
-            <ul role="menu" aria-hidden="true" aria-orientation="vertical">
+            <ul role="menu" aria-hidden="true" aria-orientation="vertical" class="dropdown-content">
               <li role="menuitem">
                 <a href="#">Edit profile</a>
               </li>
@@ -130,10 +130,10 @@
         <!-- end account dropdown -->
 
         <!-- Settings Dropdown -->
-        <div>
-          <button>&#9881;</button>
+        <div class="dropdown flex-dropdown-container">
+          <button class="dropdown-button character-icon">&#9881;</button>
           <div tabindex="-1">
-            <ul role="menu" aria-hidden="true" aria-orientation="vertical">
+            <ul role="menu" aria-hidden="true" aria-orientation="vertical" class="dropdown-content">
               <li role="menuitem">
                 <a href="#">Settings</a>
               </li>
@@ -146,16 +146,16 @@
         <!-- End settings dropdown -->
 
         <!-- Notifications dropdown -->
-        <div>
-          <button>
+        <div class="dropdown flex-dropdown-container">
+          <button class="dropdown-button notifications-icon">
             &#9888;
           </button>
           <div tabindex="-1">
             <h6> Notifications</h6>
-            <ul role="menu" aria-hidden="true" aria-orientation="vertical">
+            <ul role="menu" aria-hidden="true" aria-orientation="vertical" class="dropdown-content">
               <li role="menuitem">
                 <a href="">
-                  <h6>Your accoutn has been verified</h6>
+                  <h6>Your account has been verified</h6>
                   <small> 6 min ago </small>
                 </a>
               </li>
@@ -171,14 +171,14 @@
         <!-- End Notifications dropdown -->
 
         <!-- Messages dropdown -->
-        <div>
-          <button>&#9993;
+        <div class="dropdown flex-dropdown-container">
+          <button class="dropdown-button count-icon">&#9993;
             <!-- Count Badge -->
             <span>3</span>
           </button>
           <div tabindex="-1">
             <h6>Messages</h6>
-            <ul role="menu" aria-hidden="true" aria-orientation="vertical">
+            <ul role="menu" aria-hidden="true" aria-orientation="vertical" class="dropdown-content">
               <li role="menuitem">
                 <a href="#">
                   <div>
@@ -200,28 +200,28 @@
     <!-- End Header -->
 
     <!-- partial -->
-    <main>
+    <main class="dashboard">
       <!-- Dashboard info boxes -->
-      <div>
-        <div>
+      <div class="info-box-container">
+        <div class="info-box">
           <h5>Borrowed</h5>
           <h5>$62,0076.00</h5>
           <p>48% target reached</p>
         </div>
 
-        <div>
+        <div class="info-box">
           <h5>Annual Profit</h5>
           <h5>$1,958,104.00</h5>
           <p>55% target reached</p>
         </div>
 
-        <div>
+        <div class="info-box">
           <h5>Lead Conversion</h5>
           <h5>$234,769.00</h5>
           <p>87% target reached</p>
         </div>
 
-        <div>
+        <div class="info-box">
           <h5>Average Income</h5>
           <h5>$1,200.00</h5>
           <p>87% target reached</p>
@@ -230,7 +230,7 @@
 
 
       <!-- CARD => Revenue by location  (Map)-->
-      <div>
+      <div class="revenue-card">
         <h4>Revenue by location</h4>
 
         <!-- Subtitle info -->
@@ -293,7 +293,7 @@
       <!-- Grid -->
       <div>
         <!-- Card => Impressions chart -->
-        <div>
+        <div class="impressions-card">
           <h3>Impressions</h3>
           <div>
             <div>
@@ -311,7 +311,7 @@
 
 
         <!-- Card => Traffic chart -->
-        <div>
+        <div class="traffic-card">
           <h3>Traffic</h3>
           <div>
             <div>
@@ -331,7 +331,7 @@
       <!-- Grid 2/3 and 1/3 -->
       <div>
         <!-- Card => Revenue by location 2 -->
-        <div>
+        <div class="revenue-card-2">
           <h4>Revenue by location</h4>
           <div>
             <h6>Sales performance revenue based by country</h6>
@@ -365,7 +365,7 @@
         <!-- End of Revenue by location 2 -->
 
         <!-- Card => Order Statistics -->
-        <div>
+        <div class="order-card">
           <div>
             <div>
               <h4>Order Statistics</h4>

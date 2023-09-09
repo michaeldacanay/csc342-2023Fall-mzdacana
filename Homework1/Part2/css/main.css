@@ -11,12 +11,13 @@ body {
 .wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
     gap: 10px;
 }
 
 .sidebar {
     grid-column: 1;
-    grid-row: 1 / 5;
+    grid-row: 1 / 4;
     background-color: rgb(202,202,202);
     padding: 10px;
 }
@@ -37,6 +38,16 @@ body {
 
 #profile {
     width: 150px;
+}
+
+.flex-profile-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.flex-profile-item {
+    flex: 1;
 }
 
 .flex-container {
@@ -69,7 +80,8 @@ body {
 }
 
 .user-account {
-    background-color: red;
+    text-align: center;
+    background-color: rgb(83,156,183);
 }
 
 #footer {
@@ -103,6 +115,133 @@ body {
 }
 
 .content {
-    grid-column: 2 / 5;
+    grid-column: 2 / 6;
     padding: 10px;
+}
+
+.top-header {
+    margin: 50px;
+}
+
+/* .content-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 10px;
+} */
+
+.left-header {
+    /* grid-row: 2;
+    grid-column: 2; */
+    float: left;
+}
+
+.right-header {
+    /* grid-row: 2;
+    grid-column: 3 / 6; */
+    float: right;
+}
+
+.top-section {
+    grid-row: 1;
+}
+
+.dashboard {
+    grid-row: 2 / 6;
+    grid-column: 2 / 6;
+    clear: right;
+}
+
+
+.flex-dropdown-container {
+    display: flex;
+}
+
+/* Style the button that triggers the dropdown */
+.dropdown-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+  
+  /* Style the dropdown container (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+  
+  /* Style each list item */
+.dropdown-content li {
+    text-align: center;
+}
+  
+  /* Show the dropdown when hovering over the button */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.character-icon {
+    font-size: 40px;
+}
+
+.notifications-icon, .count-icon {
+    font-size: 30px;
+}
+
+h6 {
+    font-size: 12px;
+}
+
+.info-box {
+    border: 2px solid black;
+    background-color: #f0f0f0; /* Light gray background */
+    padding: 20px; /* Add padding for spacing inside the box */
+    color: #333; /* Dark gray text color */
+    font-family: Arial, sans-serif; /* Choose an appropriate font */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.info-box-container {
+    display: flex;
+}
+
+.revenue-card {
+    float: left;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.impressions-card {
+    float: left;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.traffic-card {
+    float: left;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.revenue-card-2 {
+    float: left;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.order-card {
+    float: left;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
 }
