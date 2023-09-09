@@ -5,23 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>CSC 342 Homework 1 Dashboard</title>
+  <link href="css/main.css" rel="stylesheet">
 </head>
-<body>
+<body class="wrapper">
   <!-- Start Sidebar -->
-  <aside>
+  <aside class="sidebar">
     <!-- App Logo -->
     <div>
       <a href="#">
-        <img src="./images/logo.svg" alt="logo">
+        <img src="./images/logo.svg" alt="logo" id="logo">
       </a>
-      <p>NCSU - CSC 342</p>
+      <p id="class-name">NCSU - CSC 342</p>
     </div>
     <!-- End App Logo section -->
 
     <div>
       <!-- User Account -->
-      <div>
-        <img src="./images/face.jpg" alt="logo">
+      <div class="user-account">
+        <img src="./images/face.jpg" alt="logo" id="profile">
         <div>
           <p>Stu Dent</p>
           <p>stu.dent@ncsu.edu</p>
@@ -30,33 +31,33 @@
       <!-- End User Account -->
 
       <!-- links -->
-      <nav>
+      <nav class="flex-container">
         <div>
-          <a href="#">
+          <a href="#" class="flex-item nav-link hover-button">
             Dashboard
           </a>
         </div>
 
         <div>
-          <a href="#">
+          <a href="#" class="flex-item nav-link hover-button">
             Forms
           </a>
         </div>
 
         <div>
-          <a href="#">
+          <a href="#" class="flex-item nav-link hover-button">
             UI Features
           </a>
           <!-- Sublinks under dashboard -->
-          <div>
+          <div class="flex-item flex-sublink-container">
             <nav>
               <div>
-                <a href="#">
+                <a href="#" class="sublink nav-link sub-hover-button">
                   Buttons
                 </a>
               </div>
               <div>
-                <a href="#">
+                <a href="#" class="sublink nav-link sub-hover-button">
                   Typography
                 </a>
               </div>
@@ -66,13 +67,13 @@
         </div>
 
         <div>
-          <a href="#">
+          <a href="#" class="flex-item nav-link hover-button">
             Tables
           </a>
         </div>
 
         <div>
-          <a href="#">
+          <a href="#" class="flex-item nav-link hover-button">
             Charts
           </a>
         </div>
@@ -80,9 +81,9 @@
       <!-- end links -->
 
       <!-- aside footer -->
-      <div>
-        <a href="#">Settings</a>
-        <a href="#">Logout</a>
+      <div id="footer">
+        <a href="#" class="nav-link sub-hover-button">Settings</a>
+        <a href="#" class="nav-link sub-hover-button">Logout</a>
       </div>
       <!-- end aside footer -->
     </div>
@@ -90,7 +91,7 @@
   <!-- End Sidebar -->
 
   <!-- Start Content -->
-  <section>
+  <section class="content">
     <!-- Start header -->
     <header>
       <!-- left section -->
@@ -281,7 +282,7 @@
 
           <div>
             <div>
-              <img src="./images/map.png"/>
+              <img src="./images/map.png" class="charts"/>
             </div>
           </div>
         </div>
@@ -302,7 +303,7 @@
               </div>
             </div>
             <div>
-              <img src="./images/impressions.png"/>
+              <img src="./images/impressions.png" class="charts"/>
             </div>
           </div>
         </div>
@@ -320,7 +321,7 @@
               </div>
             </div>
             <div>
-              <img src="./images/traffic.png"/>
+              <img src="./images/traffic.png" class="charts"/>
             </div>
           </div>
         </div>
@@ -358,7 +359,7 @@
             </div>
           </div>
           <div>
-            <img src="./images/bar-chart.png"/>
+            <img src="./images/bar-chart.png" class="charts"/>
           </div>
         </div>
         <!-- End of Revenue by location 2 -->
@@ -373,7 +374,7 @@
             <div id="sales-legend"></div>
           </div>
           <div>
-            <img src="./images/order-stats.png"/>
+            <img src="./images/order-stats.png" class="charts"/>
           </div>
         </div>
         <!-- End of Order Statistics -->
