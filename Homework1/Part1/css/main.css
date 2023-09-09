@@ -27,7 +27,7 @@ header {
 .hover-button {
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s; /* Add a smooth transition effect */
+    transition: background-color 0.3s;
     border-radius: 10px;
 }
 
@@ -37,7 +37,7 @@ header {
 }
 
 .nav-link:visited {
-    color: black; /* Set the visited link color to the same color (blue) */
+    color: black;
 }
 
 .hover-button:hover {
@@ -56,19 +56,17 @@ header {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-auto-flow: dense;
-    grid-gap: 10px; /* Adds 10px gap between rows and columns */
-    justify-content: center; /* Horizontally centers items */
-    /* align-items: center; Vertically centers items */
+    grid-gap: 10px;
+    justify-content: center;
 }
 
 .grid-item {
     padding: 20px;
-    /* border: 1px solid #333; */
     text-align: center;
 }
 
 .container {
-    max-width: 1000px; /* Set your desired maximum width */
-    margin: 0 auto; /* Center the container horizontally on the page */
+    max-width: 1000px;
+    margin: 0 auto;
 }
   
