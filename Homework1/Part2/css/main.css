@@ -95,7 +95,7 @@ body {
     color: #fff;
     padding: 10px 20px;
     cursor: pointer;
-    transition: background-color 0.3s; /* Add a smooth transition effect */
+    transition: background-color 0.3s;
     border-radius: 20px;
 }
 
@@ -105,7 +105,7 @@ body {
 
 .sub-hover-button {
     cursor: pointer;
-    transition: background-color 0.3s; /* Add a smooth transition effect */
+    transition: background-color 0.3s;
     border-radius: 5px;
     padding: 0px 2px 0px 2px;
 }
@@ -123,22 +123,11 @@ body {
     margin: 50px;
 }
 
-/* .content-grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 10px;
-} */
-
 .left-header {
-    /* grid-row: 2;
-    grid-column: 2; */
     float: left;
 }
 
 .right-header {
-    /* grid-row: 2;
-    grid-column: 3 / 6; */
     float: right;
 }
 
@@ -157,7 +146,6 @@ body {
     display: flex;
 }
 
-/* Style the button that triggers the dropdown */
 .dropdown-button {
     background-color: #4CAF50;
     color: white;
@@ -165,7 +153,7 @@ body {
     cursor: pointer;
 }
   
-  /* Style the dropdown container (hidden by default) */
+/* Style the dropdown container */
 .dropdown-content {
     display: none;
     position: absolute;
@@ -175,12 +163,12 @@ body {
     z-index: 1;
 }
   
-  /* Style each list item */
+/* Style each list item */
 .dropdown-content li {
     text-align: center;
 }
   
-  /* Show the dropdown when hovering over the button */
+/* Show the dropdown when hovering over the button */
 .dropdown:hover .dropdown-content {
     display: block;
 }
@@ -199,12 +187,11 @@ h6 {
 
 .info-box {
     border: 2px solid black;
-    background-color: #f0f0f0; /* Light gray background */
-    padding: 20px; /* Add padding for spacing inside the box */
-    color: #333; /* Dark gray text color */
-    font-family: Arial, sans-serif; /* Choose an appropriate font */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
-    border-radius: 5px; /* Rounded corners */
+    background-color: #f0f0f0;
+    padding: 20px;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a shadow */
+    border-radius: 5px;
 }
 
 .info-box-container {
