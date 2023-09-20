@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Mode Toggle</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      background-color: white;
+      color: black;
+
+      transition: 1s;
+    }
+
+    html.invert {
+      filter:invert(1);
+      transform: rotate(180deg);
+      transition: 1s;
+    }
+
+    /* html.invert img {
+
+    } */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #CCC;
+      box-shadow: 0px 10px 18px 0px black;
+      padding: 30px;
+    }
+    header .tagline {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 3rem;
+    }
+    section {
+      margin: 15px;
+      border-bottom: 1px solid #666;
+    }
+    section:last-of-type {
+      border-bottom: 0;
+    }
+    h1 {
+      display: inline-block;
+      border-bottom: 3px double #FF0000;
+    }
+
+    p::first-line {
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="tagline">Lorem Ipsum</div>
+    <label><input type="checkbox"> Toggle Dark Mode</label>
+  </header>
+  <script>
+    let check = document.querySelector("input");
+    check.addEventListener('click', e => {
+      console.log(e.target.checked);
+      let html = document.querySelector('html');
+      // let invertState = e.target.checked ? 1 : 0
+      // html.style.filter = `invert(${invertState})`;
+      html.classList.toggle('invert')
+    });
+  </script>
+  <main>
+    <section>
+      <h1>Section 1</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur molestie lorem eu purus posuere, quis
+        elementum velit tempor. Donec ligula ante, elementum non pellentesque et, hendrerit vitae lectus.
+        Vivamus non venenatis orci. Fusce urna nulla, suscipit a ipsum eu, rutrum imperdiet erat. Proin eu
+        venenatis tellus, ac bibendum odio. Ut arcu nisl, imperdiet eget facilisis nec, posuere et ipsum. Proin
+        ullamcorper lacinia nisi, sit amet vehicula mauris commodo mattis. Vestibulum a metus sit amet elit
+        laoreet ornare. Morbi pulvinar eros sodales justo dictum, bibendum tempor urna sagittis. Maecenas nec
+        turpis augue. Pellentesque vel semper dolor. Curabitur a risus ante. Integer tincidunt ligula nec
+        aliquam elementum. Vivamus vestibulum sed mi in efficitur. Fusce aliquam, metus ac posuere accumsan, mi
+        mauris auctor purus, nec accumsan mauris mauris id augue. In a felis rhoncus, eleifend quam malesuada,
+        faucibus lorem.</p>
+    </section>
+    <section>
+      <h1>Section 2</h1>
+      <p>In quis lectus eu ligula egestas lobortis. Etiam ullamcorper tempus velit, sed lacinia lorem auctor
+        at. Donec cursus, ipsum ac mollis mollis, justo ex pharetra sapien, a pretium est quam varius neque.
+        Cras a
+        rutrum velit, eu bibendum eros. Phasellus consectetur ornare mi. Etiam id mi et nunc euismod pulvinar
+        vitae
+        ac orci. Aliquam tristique iaculis diam pellentesque elementum. Ut elementum vitae leo ut eleifend.
+        Maecenas
+        dictum nisi sit amet turpis congue, sed placerat ante porta. Nulla facilisi. Vivamus venenatis pharetra
+        velit sed efficitur. Proin convallis pulvinar ex eu luctus. Pellentesque faucibus tellus et tristique
+        facilisis. Vestibulum eget sodales turpis, nec mollis metus.</p>
+    </section>
+    <section>
+      <h1>Section 3</h1>
+      <p>Cras varius tincidunt velit, quis auctor nibh accumsan quis. Nulla lacinia elementum sem, sed
+        placerat velit porta ac. Fusce vitae ullamcorper justo. Sed in libero ac ligula facilisis cursus sit
+        amet ut
+        massa. Nam sit amet leo malesuada mauris placerat vulputate at et lectus. Integer sit amet nibh vel
+        neque
+        semper hendrerit et aliquet elit. Quisque rutrum ligula at dolor auctor fringilla at eu est. Nullam
+        finibus
+        leo vitae nibh ornare, vel mollis orci vulputate. Nulla nec sem varius, fermentum tellus in, porta mi.
+      </p>
+    </section>
+    <section>
+      <h1>Section 4</h1>
+      <p>Aliquam eget pretium tortor, sit amet ornare diam. Etiam elit lorem, dignissim vel bibendum non,
+        cursus in diam. In cursus vitae tortor molestie consequat. Pellentesque dolor mauris, laoreet a ante ac,
+        luctus condimentum sem. Nunc sit amet sapien ullamcorper, tempor sapien ac, mattis mauris. Vivamus
+        vestibulum metus sed arcu laoreet luctus. Praesent tincidunt tortor ex, id tempus felis dictum ut.
+        Vestibulum in felis semper, feugiat felis non, varius enim. Aenean nisl ipsum, tincidunt sed elementum
+        non,
+        molestie id metus. Sed eget lorem sit amet erat efficitur rutrum. Pellentesque congue tincidunt
+        interdum.
+        Praesent ut dignissim augue, in vulputate nunc. Duis rutrum sit amet ipsum non hendrerit. Nunc quam
+        libero,
+        fermentum sit amet enim a, tincidunt ultrices mauris. Quisque varius est sem, eu efficitur ex convallis
+        consequat.</p>
+    </section>
+    <section>
+      <h1>Section 5</h1>
+      <p>Suspendisse potenti. Nulla congue, risus eu pulvinar mollis, ligula enim mattis nulla, eget dapibus risus
+        odio et ligula. Vivamus mattis dapibus est, nec pretium magna. Nullam ligula magna, finibus sit amet est
+        scelerisque, sodales gravida dolor. Duis dapibus sodales venenatis. Aliquam semper, risus rutrum
+        bibendum blandit, eros ipsum placerat nunc, vel auctor neque metus ut urna. Morbi scelerisque faucibus
+        cursus.</p>
+    </section>
+  </main>
+</body>
+
+</html>

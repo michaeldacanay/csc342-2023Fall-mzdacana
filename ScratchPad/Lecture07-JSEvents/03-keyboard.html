@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Input Restriction</title>
+  <script>
+    window.addEventListener('DOMContentLoaded', (e) => {
+      const input = document.querySelector('input');
+      input.addEventListener('keydown', e => {
+        console.log(e);
+        if(e.key !== 'A') {
+          e.preventDefault();
+        }
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <input type="text" />
+</body>
+
+</html>
