@@ -1,0 +1,96 @@
+* {
+    font-family: 'Verdana';
+    font-size: 12px;
+}
+
+.calc-grid-container {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 5px;
+}
+
+.calc-grid-item-display {
+    grid-column: 1 / 5;
+    grid-row: 1;
+}
+
+.calc-grid-item-7 {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.calc-grid-item-8 {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.calc-grid-item-9 {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.calc-grid-item-4 {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.calc-grid-item-5 {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.calc-grid-item-6 {
+    grid-column: 3;
+    grid-row: 3;
+}
+
+.calc-grid-item-1 {
+    grid-column: 1;
+    grid-row: 4;
+}
+
+.calc-grid-item-2 {
+    grid-column: 2;
+    grid-row: 4;
+}
+
+.calc-grid-item-3 {
+    grid-column: 3;
+    grid-row: 4;
+}
+
+.calc-grid-item-0 {
+    grid-column: 2;
+    grid-row: 5;
+}
+
+.calc-grid-item-div {
+    grid-column: 4;
+    grid-row: 2;
+}
+
+.calc-grid-item-mul {
+    grid-column: 4;
+    grid-row: 3;
+}
+
+.calc-grid-item-sub {
+    grid-column: 4;
+    grid-row: 4;
+}
+
+.calc-grid-item-c {
+    grid-column: 1;
+    grid-row: 5;
+}
+
+.calc-grid-item-dec {
+    grid-column: 3;
+    grid-row: 5;
+}
+
+.calc-grid-item-eq {
+    grid-column: 1 / 5;
+    grid-row: 6;
+}
