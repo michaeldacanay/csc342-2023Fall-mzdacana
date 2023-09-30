@@ -19,6 +19,10 @@
     text-align: right;
 }
 
+.flash {
+    color: rgb(228,228,228);
+}
+
 .calc-grid-item-7 {
     grid-column: 1;
     grid-row: 2;
