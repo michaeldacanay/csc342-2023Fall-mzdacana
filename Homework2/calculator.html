@@ -4,42 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/calculator.css">
 </head>
 <body>
     <p>Simple Calculator</p>
     <!-- css grid-->
-    <div class="calc-grid-container">
-        <input class="calc-grid-item-display"></input>
-        <button class="calc-grid-item-1">1</button>
-        <button class="calc-grid-item-2">2</button>
-        <button class="calc-grid-item-3">3</button>
-        <button class="calc-grid-item-4">4</button>
-        <button class="calc-grid-item-5">5</button>
-        <button class="calc-grid-item-6">6</button>
-        <button class="calc-grid-item-7">7</button>
-        <button class="calc-grid-item-8">8</button>
-        <button class="calc-grid-item-9">9</button>
-        <button class="calc-grid-item-0">0</button>
+    <div class="flex-container">
+        <div class="calc-grid-container flex-item">
+            <!-- <input class="calc-grid-item-display" pattern="[0-9]*.?[0-9]*" oninput="restrictInput(this)"></input> -->
+            <div class="calc-grid-item-display">0</div>
+            <button class="calc-grid-item-1">1</button>
+            <button class="calc-grid-item-2">2</button>
+            <button class="calc-grid-item-3">3</button>
+            <button class="calc-grid-item-4">4</button>
+            <button class="calc-grid-item-5">5</button>
+            <button class="calc-grid-item-6">6</button>
+            <button class="calc-grid-item-7">7</button>
+            <button class="calc-grid-item-8">8</button>
+            <button class="calc-grid-item-9">9</button>
+            <button class="calc-grid-item-0">0</button>
+    
+            <button class="calc-grid-item-c">C</button>
+            <button class="calc-grid-item-dec">.</button>
+            
+            <!-- operators -->
+            <button class="calc-grid-item-div">/</button>
+            <button class="calc-grid-item-mul">x</button>
+            <button class="calc-grid-item-sub">-</button>
+            <button class="calc-grid-item-add">+</button>
+            <button class="calc-grid-item-sign">+/-</button>
+            <button class="calc-grid-item-eq">=</button>
+        </div>
 
-        <button class="calc-grid-item-c">C</button>
-        <button class="calc-grid-item-dec">.</button>
+        <div class="history-container flex-item">
+            <div class="history-list-container">
+                <!-- <div class="history-item">123</div>
+                <div class="history-item">118</div>
+                <div class="history-item">123</div>
+                <div class="history-item">178</div>
+                <div class="history-item">123</div> -->
+            </div>
+            <button class="history-clear">Clear History</button>
+        </div>
         
-        <!-- operators -->
-        <button class="calc-grid-item-div">/</button>
-        <button class="calc-grid-item-mul">x</button>
-        <button class="calc-grid-item-sub">-</button>
-        <button class="calc-grid-item-add">+</button>
-        <button class="calc-grid-item-eq">=</button>
     </div>
+    
 
-    <div class="history-flex-container">
-        <div class="history-flex-item"></div>
-        <div class="history-flex-item"></div>
-        <div class="history-flex-item"></div>
-        <div class="history-flex-item"></div>
-        <div class="history-flex-item"></div>
-    </div>
-    <button class="history-clear">Clear History</button>
+    <script src="js/calculator.js"></script>
 </body>
 </html>

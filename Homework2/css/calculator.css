@@ -13,6 +13,10 @@
 .calc-grid-item-display {
     grid-column: 1 / 5;
     grid-row: 1;
+    border: 1px solid black;
+    border-radius: 2px;
+    padding: 0px 2px;
+    text-align: right;
 }
 
 .calc-grid-item-7 {
@@ -90,7 +94,46 @@
     grid-row: 5;
 }
 
-.calc-grid-item-eq {
-    grid-column: 1 / 5;
+.calc-grid-item-sign {
+    grid-column: 4;
     grid-row: 6;
+}
+
+.calc-grid-item-eq {
+    grid-column: 1 / 4;
+    grid-row: 6;
+}
+
+.flex-container {
+    display: flex;
+    gap: 30px
+}
+
+.history-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.history-list-container {
+    height: 100px;
+    width: 150px;
+    overflow: auto; /* vertical scrollbar when content overflows */
+    border: 1px solid black;
+    border-radius: 2px;
+}
+
+.history-item {
+    /* border: 1px solid black; */
+    padding: 2px 5px;   /* 2px top and bottom, 5px left and right */
+    text-align: right;
+}
+
+.history-item:nth-child(even) {
+    background-color: rgb(228,228,228); /* shade every other row */
+}
+
+.history-clear {
+    margin: 10px;
+    width: 100px;
 }

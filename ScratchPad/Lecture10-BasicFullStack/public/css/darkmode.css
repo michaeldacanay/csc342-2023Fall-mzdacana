@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background-color: white;
+  color: black;
+
+  transition: 1s;
+}
+
+html.invert {
+  filter: invert(1);
+  transform: rotate(180deg);
+  transition: 1s;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #CCC;
+  box-shadow: 0px 10px 18px 0px black;
+  padding: 30px;
+}
+
+header .tagline {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 3rem;
+}
+
+section {
+  margin: 15px;
+  border-bottom: 1px solid #666;
+}
+
+section:last-of-type {
+  border-bottom: 0;
+}
+
+h1 {
+  display: inline-block;
+  border-bottom: 3px double #FF0000;
+}
+
+p::first-line {
+  font-size: 1.1em;
+  font-weight: bold;
+}
