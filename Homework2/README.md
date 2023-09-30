@@ -4,4 +4,4 @@
 
 A basic web-based calculator with computation history, using Javascript, DOM manipulation and event handling.
 
-[Calculator](./index.html)
+[Calculator](./calculator.html)
