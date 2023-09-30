@@ -4,19 +4,20 @@ let previousValue = 0
 let currentAction = null;
 let hasDecimal = false;
 let error = false;
+let addedToHistory = false;
 
-for (let i = 0; i < 10; i++) {
-    // Create new div element
-    const div = document.createElement("div");
+// for (let i = 0; i < 10; i++) {
+//     // Create new div element
+//     const div = document.createElement("div");
     
-    // Add class, id, and text
-    div.classList.add("history-item");
-    div.id = "history-item" + (i + 1);
-    div.textContent = "This is div number " + (i + 1);
+//     // Add class, id, and text
+//     div.classList.add("history-item");
+//     div.id = "history-item" + (i + 1);
+//     div.textContent = "This is div number " + (i + 1);
 
-    // Append the div to the history-list-container
-    history.appendChild(div);
-}
+//     // Append the div to the history-list-container
+//     history.appendChild(div);
+// }
 
 const display = document.querySelector('.calc-grid-item-display')
 
@@ -68,6 +69,7 @@ numberBtns.forEach(numberBtn => {
         }
 
         currentAction = 'number';
+        addedToHistory = false;
     });
 });
 
@@ -109,7 +111,17 @@ operatorBtns.forEach(operatorBtn => {
                 }
                 display.textContent = Number(previousValue) / Number(display.textContent);
             }
+
             previousValue = display.textContent;
+            // add to history
+            if (!addedToHistory) {
+                const div = document.createElement("div");
+                div.classList.add("history-item");
+                div.id = "history-item" + (history.children.length + 1);
+                div.textContent = display.textContent;
+                history.appendChild(div);
+            }
+            addedToHistory = true;
         }
 
         currentOperator = e.target.textContent;
@@ -129,6 +141,12 @@ operatorBtns.forEach(operatorBtn => {
 
 clearBtn.addEventListener('click', e => {
     console.log('Button', e.target.textContent, 'was clicked!');
+    // flash display color
+    display.classList.add('flash');
+    setTimeout(() => {
+        display.classList.remove('flash');
+    }, 100);
+    
     display.textContent = 0;
     currentOperator = null;
     currentAction = null;
@@ -179,6 +197,15 @@ eqBtn.addEventListener('click', e => {
     hasDecimal = false;
     currentAction = null;
     currentOperator = null;
+    // add to history
+    if (!addedToHistory) {
+        const div = document.createElement("div");
+        div.classList.add("history-item");
+        div.id = "history-item" + (history.children.length + 1);
+        div.textContent = display.textContent;
+        history.appendChild(div);
+    }
+    addedToHistory = true;
 });
 
 decBtn.addEventListener('click', e => {
@@ -200,6 +227,11 @@ changeSignBtn.addEventListener('click', e => {
     if (error) {
         return
     }
+    // flash display color
+    display.classList.add('flash');
+    setTimeout(() => {
+        display.classList.remove('flash');
+    }, 100);
 
     // console.log('change-button', error)
     display.textContent = display.textContent * -1;
