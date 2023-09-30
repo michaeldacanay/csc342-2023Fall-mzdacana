@@ -18,21 +18,29 @@ let addedToHistory = false;
 //     // Append the div to the history-list-container
 //     history.appendChild(div);
 // }
+const clearHistoryBtn = document.querySelector('.history-clear');
+
+clearHistoryBtn.addEventListener('click', e => {
+    console.log('Button', e.target.textContent, 'was clicked!');
+    while (history.firstChild) {
+        history.removeChild(history.firstChild);
+    }
+});
 
 const display = document.querySelector('.calc-grid-item-display')
 
 // numbers
-const numberBtns = document.querySelectorAll('.number')
-const btn1 = document.querySelector('.calc-grid-item-1')
-const btn2 = document.querySelector('.calc-grid-item-2')
-const btn3 = document.querySelector('.calc-grid-item-3')
-const btn4 = document.querySelector('.calc-grid-item-4')
-const btn5 = document.querySelector('.calc-grid-item-5')
-const btn6 = document.querySelector('.calc-grid-item-6')
-const btn7 = document.querySelector('.calc-grid-item-7')
-const btn8 = document.querySelector('.calc-grid-item-8')
-const btn9 = document.querySelector('.calc-grid-item-9')
-const btn0 = document.querySelector('.calc-grid-item-0')
+const numberBtns = document.querySelectorAll('.number');
+const btn1 = document.querySelector('.calc-grid-item-1');
+const btn2 = document.querySelector('.calc-grid-item-2');
+const btn3 = document.querySelector('.calc-grid-item-3');
+const btn4 = document.querySelector('.calc-grid-item-4');
+const btn5 = document.querySelector('.calc-grid-item-5');
+const btn6 = document.querySelector('.calc-grid-item-6');
+const btn7 = document.querySelector('.calc-grid-item-7');
+const btn8 = document.querySelector('.calc-grid-item-8');
+const btn9 = document.querySelector('.calc-grid-item-9');
+const btn0 = document.querySelector('.calc-grid-item-0');
 
 // operators
 const operatorBtns = document.querySelectorAll('.operator')
@@ -146,7 +154,7 @@ clearBtn.addEventListener('click', e => {
     setTimeout(() => {
         display.classList.remove('flash');
     }, 100);
-    
+
     display.textContent = 0;
     currentOperator = null;
     currentAction = null;
@@ -236,4 +244,3 @@ changeSignBtn.addEventListener('click', e => {
     // console.log('change-button', error)
     display.textContent = display.textContent * -1;
 })
-
