@@ -25,6 +25,8 @@ clearHistoryBtn.addEventListener('click', e => {
     while (history.firstChild) {
         history.removeChild(history.firstChild);
     }
+    // remove focus
+    e.target.blur();
 });
 
 const display = document.querySelector('.calc-grid-item-display')
@@ -61,8 +63,9 @@ function processNumber(num) {
         return
     }
 
-    console.log(num)
-    console.log('number-currentAction', currentAction)
+    console.log(num);
+    console.log('number-currentAction-before', currentAction);
+    console.log('number-previousValue', previousValue);
     if (currentAction == null || currentAction == 'operator') {
         // new number
         if (currentOperator == '-')
@@ -75,12 +78,16 @@ function processNumber(num) {
 
     currentAction = 'number';
     addedToHistory = false;
+    console.log('number-currentAction-after', currentAction)
 }
 
 numberBtns.forEach(numberBtn => {
     numberBtn.addEventListener('click', e => {
         console.log('Button', e.target.textContent, 'was clicked!');
         processNumber(e.target.textContent)
+
+        // Remove focus from the button
+        e.target.blur();
     });
 });
 
@@ -112,7 +119,7 @@ function processOperator(op) {
             display.textContent = Number(previousValue) + Number(display.textContent);
         } else if (currentOperator == '-') {
             display.textContent = Number(previousValue) - Number(display.textContent);
-        } else if (currentOperator == 'x') {
+        } else if (currentOperator == 'x' || currentOperator == '*') {
             display.textContent = Number(previousValue) * Number(display.textContent);
         } else if (currentOperator == '/') {
             if (display.textContent == '0') {
@@ -161,6 +168,7 @@ operatorBtns.forEach(operatorBtn => {
 // })
 
 clearBtn.addEventListener('click', e => {
+    e.preventDefault();
     console.log('Button', e.target.textContent, 'was clicked!');
     // flash display color
     display.classList.add('flash');
@@ -174,6 +182,9 @@ clearBtn.addEventListener('click', e => {
     previousValue = 0;
     hasDecimal = false;
     error = false;
+
+    // Remove focus from the button
+    e.target.blur();
 });
 
 function processEquals() {
@@ -187,6 +198,7 @@ function processEquals() {
         display.classList.remove('flash');
     }, 100);
 
+    console.log('eq-display', display.textContent);
     console.log('eq-currentOperator', currentOperator);
     console.log('eq-prevValue', previousValue);
     
@@ -195,12 +207,12 @@ function processEquals() {
         previousValue = display.textContent;
     } else {
         if (currentOperator == null) {
-
+            
         } else if (currentOperator == '+') {
             display.textContent = Number(previousValue) + Number(display.textContent);
         } else if (currentOperator == '-') {
             display.textContent = Number(previousValue) - Number(display.textContent);
-        } else if (currentOperator == 'x') {
+        } else if (currentOperator == 'x' || currentOperator == '*') {
             display.textContent = Number(previousValue) * Number(display.textContent);
         } else if (currentOperator == '/') {
             console.log('HELLO');
@@ -279,19 +291,20 @@ changeSignBtn.addEventListener('click', e => {
 document.addEventListener('keyup', e => {
     // console.log('Key', e.key, 'was pressed!');
     const key = e.key;
+    e.preventDefault();
 
     // number
     if (/^[0-9]$/.test(key)) {
         console.log('Key', e.key, 'was pressed!');
         processNumber(key);
-    } else if (/[/*+-x]/.test(key)) {
+    } else if (/^[/*+-]$/.test(key) || key === 'x') {
         console.log('Key', e.key, 'was pressed!');
         processOperator(key);
     } else if (key === '=' || key === 'Enter' || key === 'Return') {
+        
         console.log('Key', e.key, 'was pressed!');
         processEquals();
     } else if (key === '.') {
         processDecimal();
     }
-
 });
