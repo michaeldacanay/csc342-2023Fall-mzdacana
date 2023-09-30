@@ -4,4 +4,4 @@
 
 A basic web-based calculator with computation history, using Javascript, DOM manipulation and event handling.
 
-[Calculator](./calculator.html)
+[Calculator](https://csc342-112.csc.ncsu.edu/calculator.html)
