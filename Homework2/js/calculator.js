@@ -128,6 +128,10 @@ function processOperator(op) {
             div.id = "history-item" + (history.children.length + 1);
             div.textContent = display.textContent;
             history.appendChild(div);
+
+            div.addEventListener('click', function () {
+                processNumber(this.textContent);
+            });
         }
         addedToHistory = true;
     }
@@ -217,6 +221,10 @@ function processEquals() {
         div.id = "history-item" + (history.children.length + 1);
         div.textContent = display.textContent;
         history.appendChild(div);
+
+        div.addEventListener('click', function () {
+            processNumber(this.textContent);
+        });
     }
     addedToHistory = true;
 }
