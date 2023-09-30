@@ -63,14 +63,12 @@ function processNumber(num) {
         return
     }
 
-    console.log(num);
+    console.log('number', num);
     console.log('number-currentAction-before', currentAction);
     console.log('number-previousValue', previousValue);
     if (currentAction == null || currentAction == 'operator') {
-        // new number
-        if (currentOperator == '-')
-            display.textContent = -1 * num;
-
+        console.log('starting new number... hasDecimal:', hasDecimal);
+        console.log('display the number again', num);
         display.textContent = num;
     } else if (currentAction == 'number') {
         display.textContent += num;
@@ -156,6 +154,7 @@ operatorBtns.forEach(operatorBtn => {
     operatorBtn.addEventListener('click', e => {
         console.log('Button', e.target.textContent, 'was clicked!');
         processOperator(e.target.textContent);
+        e.target.blur();
     });
 });
 
@@ -168,9 +167,7 @@ operatorBtns.forEach(operatorBtn => {
 //     }
 // })
 
-clearBtn.addEventListener('click', e => {
-    e.preventDefault();
-    console.log('Button', e.target.textContent, 'was clicked!');
+function processC() {
     // flash display color
     display.classList.add('flash');
     setTimeout(() => {
@@ -183,6 +180,11 @@ clearBtn.addEventListener('click', e => {
     previousValue = 0;
     hasDecimal = false;
     error = false;
+}
+
+clearBtn.addEventListener('click', e => {
+    console.log('Button', e.target.textContent, 'was clicked!');
+    processC();
 
     // Remove focus from the button
     e.target.blur();
@@ -249,6 +251,7 @@ function processEquals() {
 eqBtn.addEventListener('click', e => {
     console.log('Button', e.target.textContent, 'was clicked!');
     processEquals();
+    e.target.blur();
 });
 
 function processDecimal() {
@@ -257,15 +260,22 @@ function processDecimal() {
     }
     
     // decimal can appear at 
-    if ((currentAction === null || currentAction == 'number') && !hasDecimal) {
-        display.textContent += '.'
-        hasDecimal = true;
+    if (!hasDecimal) {
+        if (currentAction == null || currentAction == 'operator') {
+            display.textContent = '0.'
+            hasDecimal = true;
+            currentAction = 'number';
+        } else if (currentAction == 'number') {
+            display.textContent += '.'
+            hasDecimal = true;
+        }
     }
 }
 
 decBtn.addEventListener('click', e => {
     console.log('Button', e.target.textContent, 'was clicked!');
     processDecimal();
+    e.target.blur();
 });
 
 
@@ -282,6 +292,7 @@ changeSignBtn.addEventListener('click', e => {
 
     // console.log('change-button', error)
     display.textContent = display.textContent * -1;
+    e.target.blur();
 })
 
 
@@ -302,10 +313,11 @@ document.addEventListener('keyup', e => {
         console.log('Key', e.key, 'was pressed!');
         processOperator(key);
     } else if (key === '=' || key === 'Enter' || key === 'Return') {
-        
         console.log('Key', e.key, 'was pressed!');
         processEquals();
     } else if (key === '.') {
         processDecimal();
+    } else if (key === 'c') {
+        processC();
     }
 });
