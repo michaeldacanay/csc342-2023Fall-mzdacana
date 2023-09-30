@@ -56,6 +56,7 @@ const decBtn = document.querySelector('.calc-grid-item-dec')
 const changeSignBtn = document.querySelector('.calc-grid-item-sign')
 
 function processNumber(num) {
+    console.log('IN processNumber')
     if (error) {
         return
     }
@@ -84,7 +85,9 @@ numberBtns.forEach(numberBtn => {
 });
 
 function processOperator(op) {
-    if (error) {
+    console.log('IN processOperator')
+    if (error || op == 'Shift') {
+        console.log('exiting...')
         return
     }
     // flash display color
@@ -174,6 +177,7 @@ clearBtn.addEventListener('click', e => {
 });
 
 function processEquals() {
+    console.log('IN processEquals')
     if (error) {
         return
     }
