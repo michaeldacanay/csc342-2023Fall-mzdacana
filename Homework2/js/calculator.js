@@ -284,14 +284,16 @@ changeSignBtn.addEventListener('click', e => {
     if (error) {
         return
     }
-    // flash display color
-    display.classList.add('flash');
-    setTimeout(() => {
-        display.classList.remove('flash');
-    }, 100);
 
-    // console.log('change-button', error)
-    display.textContent = display.textContent * -1;
+    if (currentAction != 'operator') {
+        display.textContent = display.textContent * -1;
+        // flash display color
+        display.classList.add('flash');
+        setTimeout(() => {
+            display.classList.remove('flash');
+        }, 100);
+    }
+        
     e.target.blur();
 })
 
