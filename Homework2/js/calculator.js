@@ -113,8 +113,9 @@ function processOperator(op) {
     if (!previousValue) {
         previousValue = display.textContent;
     } else {
+        // what happens when we have a previousValue and currentOperator is null
         if (currentOperator == null) {
-
+            
         } else if (currentOperator == '+') {
             display.textContent = Number(previousValue) + Number(display.textContent);
         } else if (currentOperator == '-') {
@@ -132,7 +133,7 @@ function processOperator(op) {
 
         previousValue = display.textContent;
         // add to history
-        if (!addedToHistory) {
+        if (!addedToHistory && currentOperator) {
             const div = document.createElement("div");
             div.classList.add("history-item");
             div.id = "history-item" + (history.children.length + 1);
