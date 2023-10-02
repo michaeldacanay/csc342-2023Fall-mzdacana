@@ -8,7 +8,7 @@ body {
     margin: 0px;
 }
 
-.wrapper {
+.main-grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
@@ -17,67 +17,117 @@ body {
 
 .sidebar {
     grid-column: 1;
-    grid-row: 1 / 4;
-    background-color: rgb(202,202,202);
+    grid-row: 1 / 5;
+    background-color: rgb(249, 249, 249);
+    /* padding: 10px; */
+}
+
+#logo {
+    width: 270px;
     padding: 10px;
+    /* margin: 10px; */
+    background-color: rgb(34, 39, 50)
+    overflow: visible; /* no effect? */
+}
+
+.logo-backsplash {
+    background-color: rgb(34, 39, 50);
+    
+}
+ 
+/* a.logo-backsplash {
+    margin: 10px;
+} */
+.heading {
+    margin: 10px;
+}
+
+#class-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.profile-flex-container {
+    display: flex;
+    gap: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 10px;
+    /* margin-bottom: 20px; */
+    border-radius: 10px;
+}
+
+.profile-image {
+    width: 100px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.profile-flex-item {
+    flex: 1;    /* distribute available space within a flex container */
 }
 
 .charts {
     width: 400px;
 }
 
-#logo {
-    width: 400px;
-}
 
-#class-name {
-    font-family: 'Montserrat', sans-serif;
-    font-size: large;
-    font-weight: bold;
-}
 
-#profile {
-    width: 150px;
-}
-
-.flex-profile-container {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.flex-profile-item {
-    flex: 1;
-}
-
-.flex-container {
+.links-flex-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: justify;
     justify-content: center;
-    gap: 30px;
+    gap: 5px;
 }
 
-.flex-item {
-    padding: 10px;
-    color: black;
+.links-flex-item {
+    /* background-color: rgb(237, 237, 237); */
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    color: rgb(176, 176, 176);
     flex: 1;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
 }
 
-.flex-sublink-container {
-    display: flex;
-    align-items: center;
-}
-
-.sublink {
-    padding: 10px;
-    flex: 1;
+.links-flex-item:hover {
+    background-color: rgb(237, 237, 237);
+    color: rgb(65, 65, 65);
 }
 
 .nav-link {
     text-decoration: none;
-    color: black;
+    width: 100%;
+    color: rgb(102, 102, 102);
 }
+
+.nav-link:hover {
+    color: rgb(65, 65, 65);
+}
+
+
+
+.sublink-flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;    /* why is this not having effect? */
+    justify-content: flex-start;    /* why is this not having effect */
+    gap: 5px;
+}
+
+
+.sublink-flex-item {
+    padding: 10px;
+    flex: 1;
+}
+
+
 
 .user-account {
     text-align: center;
@@ -90,24 +140,13 @@ body {
     padding: 10px;
 }
 
-.hover-button {
-    background-color: #3498db;
-    color: #fff;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    border-radius: 20px;
-}
 
-.hover-button:hover {
-    background-color: #2980b9;
-}
 
 .sub-hover-button {
     cursor: pointer;
     transition: background-color 0.3s;
     border-radius: 5px;
-    padding: 0px 2px 0px 2px;
+    padding: 7px 10px;
 }
 
 .sub-hover-button:hover {

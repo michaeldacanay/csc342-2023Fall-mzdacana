@@ -7,13 +7,13 @@
   <title>CSC 342 Homework 1 Dashboard</title>
   <link href="css/main.css" rel="stylesheet">
 </head>
-<body class="wrapper">
+<body class="main-grid-container">
   <!-- Start Sidebar -->
   <aside class="sidebar">
     <!-- App Logo -->
-    <div>
-      <a href="#">
-        <img src="./images/logo.svg" alt="logo" id="logo">
+    <div class="heading">
+      <a href="#" class="logo-backsplash">
+        <img src="./images/logo.svg" alt="logo" id="logo" class="logo-backsplash">
       </a>
       <p id="class-name">NCSU - CSC 342</p>
     </div>
@@ -21,9 +21,9 @@
 
     <div>
       <!-- User Account -->
-      <div class="user-account flex-profile-container">
-        <img src="./images/face.jpg" alt="logo" id="profile" class="flex-profile-item">
-        <div class="flex-profile-item">
+      <div class="user-account profile-flex-container">
+        <img src="./images/face.jpg" alt="logo" class="profile-image" class="profile-flex-item">
+        <div class="profile-flex-item">
           <p>Stu Dent</p>
           <p>stu.dent@ncsu.edu</p>
         </div>
@@ -31,33 +31,33 @@
       <!-- End User Account -->
 
       <!-- links -->
-      <nav class="flex-container">
-        <div>
-          <a href="#" class="flex-item nav-link hover-button">
+      <nav class="links-flex-container">
+        <div class="links-flex-item">
+          <a href="#" class="nav-link">
             Dashboard
           </a>
         </div>
 
-        <div>
-          <a href="#" class="flex-item nav-link hover-button">
+        <div class="links-flex-item">
+          <a href="#" class="nav-link">
             Forms
           </a>
         </div>
 
-        <div>
-          <a href="#" class="flex-item nav-link hover-button">
+        <div class="links-flex-item">
+          <a href="#" class="nav-link">
             UI Features
           </a>
           <!-- Sublinks under dashboard -->
-          <div class="flex-item flex-sublink-container">
-            <nav>
-              <div>
-                <a href="#" class="sublink nav-link sub-hover-button">
+          <div class="links-flex-item">
+            <nav class="flex-sublink-container">
+              <div class="sublink-flex-item">
+                <a href="#" class="nav-link sub-hover-button">
                   Buttons
                 </a>
               </div>
               <div>
-                <a href="#" class="sublink nav-link sub-hover-button">
+                <a href="#" class="nav-link sub-hover-button">
                   Typography
                 </a>
               </div>
@@ -66,14 +66,14 @@
           <!-- end sublinks under dashboard -->
         </div>
 
-        <div>
-          <a href="#" class="flex-item nav-link hover-button">
+        <div class="links-flex-item">
+          <a href="#" class="nav-link">
             Tables
           </a>
         </div>
 
-        <div>
-          <a href="#" class="flex-item nav-link hover-button">
+        <div class="links-flex-item">
+          <a href="#" class="nav-link">
             Charts
           </a>
         </div>
