@@ -55,7 +55,7 @@ header {
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-auto-flow: dense;
+    grid-auto-flow: row dense;
     grid-gap: 10px;
     justify-content: center;
 }
@@ -69,3 +69,22 @@ header {
     max-width: 1000px;
     margin: 0 auto;
 }
+
+figcaption {
+    font-size: 12px;
+}
+
+figure.image-grid-item {
+    max-width: 200px;
+    padding: 0px;
+    margin: 5px;
+    box-sizing: border-box;
+}
+
+.image-grid-container {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    justify-content: center;
+}
+
