@@ -13,7 +13,7 @@
     <!-- App Logo -->
     <div class="heading">
       <a href="#" class="logo-backsplash">
-        <img src="./images/logo.svg" alt="logo" id="logo" class="logo-backsplash">
+        <img src="./images/logo.svg" alt="logo" id="logo">
       </a>
       <p id="class-name">NCSU - CSC 342</p>
     </div>
@@ -93,9 +93,9 @@
   <!-- Start Content -->
   <section class="content content-grid-container">
     <!-- Start header -->
-    <header class="top-section">
+    <header class="header-flex-container">
       <!-- left section -->
-      <div class="left-header">
+      <div class="left-header header-flex-item">
         <span>Greetings Stu Dent!</span>
 
         <!-- Search form -->
@@ -108,17 +108,17 @@
       <!-- end left section -->
 
       <!-- Right section -->
-      <div class="right-header flex-dropdown-container">
+      <div class="header-flex-item preferences-flex-container">
         <!-- Account dropdown -->
-        <div class="dropdown">
-          <button type="button" class="dropdown-button">
-            <img src="./images/face.jpg" alt="user">
-            <span>Stu Dent</span>
+        <div class="preferences-flex-item">
+          <button type="button" class="account-flex-container dropdown-button">
+            <img src="./images/face.jpg" alt="user" class="profile-image account-flex-item">
+            <span class="account-flex-item">Stu Dent</span>
           </button>
 
-          <div tabindex="-1">
-            <ul role="menu" aria-hidden="true" aria-orientation="vertical" class="dropdown-content">
-              <li role="menuitem">
+          <div tabindex="-1" class="flex-dropdown-container">
+            <ul role="menu" aria-hidden="true" aria-orientation="vertical" class="flex-dropdown-container">
+              <li role="menuitem" class>
                 <a href="#">Edit profile</a>
               </li>
               <li role="menuitem">
@@ -130,10 +130,10 @@
         <!-- end account dropdown -->
 
         <!-- Settings Dropdown -->
-        <div class="dropdown flex-dropdown-container">
-          <button class="dropdown-button character-icon">&#9881;</button>
-          <div tabindex="-1">
-            <ul role="menu" aria-hidden="true" aria-orientation="vertical" class="dropdown-content">
+        <div class="preferences-flex-item">
+          <button class="dropdown-button settings-icon">&#9881;</button>
+          <div tabindex="-1" class="flex-dropdown-container">
+            <ul role="menu" aria-hidden="true" aria-orientation="vertical" class=" dropdown-content">
               <li role="menuitem">
                 <a href="#">Settings</a>
               </li>
@@ -146,20 +146,20 @@
         <!-- End settings dropdown -->
 
         <!-- Notifications dropdown -->
-        <div class="dropdown flex-dropdown-container">
+        <div class="preferences-flex-item dropdown">
           <button class="dropdown-button notifications-icon">
             &#9888;
           </button>
-          <div tabindex="-1">
+          <div tabindex="-1" class="flex-dropdown-container">
             <h6> Notifications</h6>
             <ul role="menu" aria-hidden="true" aria-orientation="vertical" class="dropdown-content">
-              <li role="menuitem">
+              <li role="menuitem" class="dropdown-flex-item">
                 <a href="">
                   <h6>Your account has been verified</h6>
                   <small> 6 min ago </small>
                 </a>
               </li>
-              <li role="menuitem">
+              <li role="menuitem" class="dropdown-flex-item">
                 <a href="#">
                   <h6>You received a new message</h6>
                   <small> 8 min ago </small>
@@ -171,14 +171,14 @@
         <!-- End Notifications dropdown -->
 
         <!-- Messages dropdown -->
-        <div class="dropdown flex-dropdown-container">
+        <div class="preferences-flex-item dropdown">
           <button class="dropdown-button count-icon">&#9993;
             <!-- Count Badge -->
-            <span>3</span>
+            <span class="messages-count">3</span>
           </button>
-          <div tabindex="-1">
+          <div tabindex="-1" class="flex-dropdown-container">
             <h6>Messages</h6>
-            <ul role="menu" aria-hidden="true" aria-orientation="vertical" class="dropdown-content">
+            <ul role="menu" aria-hidden="true" aria-orientation="vertical" class="flex-dropdown-container dropdown-content">
               <li role="menuitem">
                 <a href="#">
                   <div>

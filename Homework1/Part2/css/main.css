@@ -19,7 +19,12 @@ body {
     grid-column: 1;
     grid-row: 1 / 5;
     background-color: rgb(249, 249, 249);
-    /* padding: 10px; */
+    border-right: 1px solid rgb(224, 224, 224);
+}
+
+.content {
+    grid-column: 2 / 6;
+    padding: 10px;
 }
 
 #logo {
@@ -28,16 +33,21 @@ body {
     /* margin: 10px; */
     background-color: rgb(34, 39, 50)
     overflow: visible; /* no effect? */
+    transition: transform 0.2s;
+}
+
+#logo:hover {
+    transform: scale(1.02);
 }
 
 .logo-backsplash {
     background-color: rgb(34, 39, 50);
-    
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    display: inline-block;  /* shrink-wrap the child content */
 }
  
-/* a.logo-backsplash {
-    margin: 10px;
-} */
 .heading {
     margin: 10px;
 }
@@ -54,7 +64,6 @@ body {
     padding-top: 10px;
     padding-bottom: 10px;
     margin: 10px;
-    /* margin-bottom: 20px; */
     border-radius: 10px;
 }
 
@@ -112,7 +121,6 @@ body {
 }
 
 
-
 .sublink-flex-container {
     display: flex;
     flex-direction: column;
@@ -140,8 +148,6 @@ body {
     padding: 10px;
 }
 
-
-
 .sub-hover-button {
     cursor: pointer;
     transition: background-color 0.3s;
@@ -153,26 +159,87 @@ body {
     background-color: rgb(228,228,228);
 }
 
-.content {
-    grid-column: 2 / 6;
+
+/* header bar */
+.header-flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid rgb(200, 200, 200);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.header-flex-item {
+}
+
+.account-flex-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+
+.preferences-flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    flex-ease: 0.5s;
+    gap: 5px;
+}
+
+.preferences-flex-item {
+    /* padding: 10px; */
+    box-sizing: border-box;
+}
+
+.dropdown-button {
+    cursor: pointer;
+    align-items: center;
+    height: 60px;
+    line-height: 55px;
+    border-radius: 10px;
     padding: 10px;
 }
 
-.top-header {
-    margin: 50px;
+.dropdown-button:hover {
+    background-color: rgb(228,228,228);
 }
 
-.left-header {
-    float: left;
+.dropdown-button:active {
+    background-color: rgb(200,200,200);
 }
 
-.right-header {
-    float: right;
+.dropdown-button:focus {
+    background-color: rgb(200,200,200);
 }
 
-.top-section {
-    grid-row: 1;
+/* .preferences-flex-item:hover {
+    background-color: rgb(228,228,228);
 }
+
+.preferences-flex-item:active {
+    background-color: rgb(200,200,200);
+}
+
+.preferences-flex-item:focus {
+    background-color: rgb(200,200,200);
+} */
+
+/* smaller profile image in header bar */
+.header-flex-container .profile-image {
+    width: 50px;
+}
+
+.preferences-flex-container button {
+    border: none;
+}
+
+
+
 
 .dashboard {
     grid-row: 2 / 6;
@@ -180,25 +247,21 @@ body {
     clear: right;
 }
 
-
 .flex-dropdown-container {
     display: flex;
+    flex-direction: column;
+    display: none;
 }
 
-.dropdown-button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-  
+
+
 /* Style the dropdown container */
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
     z-index: 1;
 }
   
@@ -212,13 +275,48 @@ body {
     display: block;
 }
 
-.character-icon {
+.settings-icon {
     font-size: 40px;
+    /* vertical-align: middle; no effect*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.notifications-icon, .count-icon {
+.notifications-icon {
     font-size: 30px;
+    /* vertical-align: middle; why is there no effect? */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: bottom;
+    padding-top: 30%;
 }
+
+.count-icon {
+    font-size: 42px;
+    vertical-align: text-top;
+}
+
+.messages-count {
+    vertical-align: text-top;
+    display: inline-block;  /* count icon beside email */
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    text-align: center; /* Center the text horizontally */
+    line-height: 20px; /* Center the text vertically */
+    font-size: 14px;
+    margin-left: -15px;
+}
+
+
+
+
+
+
 
 h6 {
     font-size: 12px;
