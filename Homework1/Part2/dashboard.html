@@ -110,7 +110,7 @@
       <!-- Right section -->
       <div class="header-flex-item preferences-flex-container">
         <!-- Account dropdown -->
-        <div class="preferences-flex-item">
+        <div class="dropdown-container preferences-flex-item">
           <button type="button" class="account-flex-container dropdown-button">
             <img src="./images/face.jpg" alt="user" class="profile-image account-flex-item">
             <span class="account-flex-item">Stu Dent</span>
@@ -118,10 +118,10 @@
 
           <div tabindex="-1" class="dropdown-content">
             <ul role="menu" aria-hidden="true" aria-orientation="vertical" class="dropdown-flex-container">
-              <li role="menuitem" class="dropdown-flex-item">
+              <li role="menuitem" class="dropdown-flex-item sub-hover-button">
                 <a href="#">Edit profile</a>
               </li>
-              <li role="menuitem" class="dropdown-flex-item">
+              <li role="menuitem" class="dropdown-flex-item sub-hover-button">
                 <a href="#">Logout</a>
               </li>
             </ul>
@@ -130,14 +130,14 @@
         <!-- end account dropdown -->
 
         <!-- Settings Dropdown -->
-        <div class="preferences-flex-item">
+        <div class="dropdown-container preferences-flex-item">
           <button class="dropdown-button settings-icon">&#9881;</button>
           <div tabindex="-1" class="dropdown-content">
             <ul role="menu" aria-hidden="true" aria-orientation="vertical" class="dropdown-flex-container">
-              <li role="menuitem" class="dropdown-flex-item">
+              <li role="menuitem" class="dropdown-flex-item sub-hover-button">
                 <a href="#">Settings</a>
               </li>
-              <li role="menuitem" class="dropdown-flex-item">
+              <li role="menuitem" class="dropdown-flex-item sub-hover-button">
                 <a href="#">Update</a>
               </li>
             </ul>
@@ -146,20 +146,20 @@
         <!-- End settings dropdown -->
 
         <!-- Notifications dropdown -->
-        <div class="preferences-flex-item dropdown">
+        <div class="dropdown-container notifications preferences-flex-item dropdown">
           <button class="dropdown-button notifications-icon">
             &#9888;
           </button>
           <div tabindex="-1" class="dropdown-content">
             <h6> Notifications</h6>
             <ul role="menu" aria-hidden="true" aria-orientation="vertical" class="dropdown-flex-container">
-              <li role="menuitem" class="dropdown-flex-item">
+              <li role="menuitem" class="dropdown-flex-item sub-hover-button">
                 <a href="">
                   <h6>Your account has been verified</h6>
                   <small> 6 min ago </small>
                 </a>
               </li>
-              <li role="menuitem" class="dropdown-flex-item">
+              <li role="menuitem" class="dropdown-flex-item sub-hover-button">
                 <a href="#">
                   <h6>You received a new message</h6>
                   <small> 8 min ago </small>
@@ -171,7 +171,7 @@
         <!-- End Notifications dropdown -->
 
         <!-- Messages dropdown -->
-        <div class="preferences-flex-item dropdown">
+        <div class="dropdown-container preferences-flex-item dropdown">
           <button class="dropdown-button count-icon">&#9993;
             <!-- Count Badge -->
             <span class="messages-count">3</span>
@@ -179,7 +179,7 @@
           <div tabindex="-1" class="dropdown-content flex-dropdown-container">
             <h6>Messages</h6>
             <ul role="menu" aria-hidden="true" aria-orientation="vertical" class="flex-dropdown-container dropdown-content">
-              <li role="menuitem" class="dropdown-flex-item">
+              <li role="menuitem" class="dropdown-flex-item sub-hover-button">
                 <a href="#">
                   <div>
                     <img src="./images/face2.jpg" alt="user">
@@ -248,7 +248,7 @@
         <div>
           <div>
               <div>
-                <table>
+                <table id="sales-table">
                   <tbody>
                     <tr>
                       <td>United States</td>

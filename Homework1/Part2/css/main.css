@@ -27,6 +27,12 @@ body {
     padding: 10px;
 }
 
+.dashboard {
+    grid-row: 2 / 6;
+    grid-column: 2 / 6;
+    clear: right;
+}
+
 #logo {
     width: 270px;
     padding: 10px;
@@ -203,19 +209,20 @@ body {
     line-height: 55px;
     border-radius: 10px;
     padding: 10px;
+    /* background-color: rgb(255,255,255); */
 }
 
 .dropdown-button:hover {
     background-color: rgb(228,228,228);
 }
 
-.dropdown-button:active {
+/* .dropdown-button:active {
     background-color: rgb(200,200,200);
-}
+} */
 
-.dropdown-button:focus {
+/* .dropdown-button:focus {
     background-color: rgb(200,200,200);
-}
+} */
 
 /* .preferences-flex-item:hover {
     background-color: rgb(228,228,228);
@@ -241,39 +248,72 @@ body {
 
 
 
-.dashboard {
-    grid-row: 2 / 6;
-    grid-column: 2 / 6;
-    clear: right;
-}
-
-.flex-dropdown-container {
-    display: flex;
-    flex-direction: column;
-    display: none;
-}
-
-
-
-/* Style the dropdown container */
-.dropdown-content {
+.dropdown-container .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
+    /* top: 100%; */
+    /* right: 0px; */
+    /* left: 0px; */
+    margin-top: 0px;
+    background-color: #F9F9F9;
+    border-radius: 10px;
+    min-width: 100px;
     /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
     z-index: 1;
 }
+
+.dropdown-container:hover .dropdown-content {
+    display: block;
+}
+/* Show the dropdown when hovering over the button */
+/* .dropdown:hover .dropdown-content {
+    display: block;
+} */
+
+.dropdown-flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    z-index: 1;
+    padding-left: 0px;
+}
+
+.dropdown-flex-item {
+    display: block;
+    min-width: 100px;
+    text-decoration: none;
+}
+
+li.dropdown-flex-item a {
+    text-decoration: none;
+    color: black;
+}
+
+
+
+/* .dropdown-button:hover~.dropdown-content {
+    display: block;
+} */
+
+/* .dropdown-button:focus .dropdown-content {
+    display: block;
+} */
+
+/* .dropdown-button:active .dropdown-content {
+    display: block;
+} */
+
+
+
+
   
 /* Style each list item */
 .dropdown-content li {
     text-align: center;
 }
   
-/* Show the dropdown when hovering over the button */
-.dropdown:hover .dropdown-content {
-    display: block;
-}
+
 
 .settings-icon {
     font-size: 40px;
@@ -291,6 +331,11 @@ body {
     align-items: center;
     vertical-align: bottom;
     padding-top: 30%;
+}
+
+.notification h6 {
+    padding-left: 10px;
+    font-weight: bold;
 }
 
 .count-icon {
@@ -314,13 +359,6 @@ body {
 
 
 
-
-
-
-
-h6 {
-    font-size: 12px;
-}
 
 .info-box {
     border: 2px solid black;
@@ -368,4 +406,13 @@ h6 {
     padding: 10px;
     border: 2px solid black;
     border-radius: 5px;
+}
+
+#sales-table td, #sales-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#sales-table tr:nth-child(even){
+    background-color: #f2f2f2;
 }
