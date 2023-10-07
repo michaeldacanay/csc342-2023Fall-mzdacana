@@ -246,14 +246,16 @@ body {
 }
 
 
+.dropdown-container {
+    position: relative; // parent container of dropdown-content
+}
 
-
-.dropdown-container .dropdown-content {
+.dropdown-content {
     display: none;
+    /* display: flex; */
     position: absolute;
-    /* top: 100%; */
-    /* right: 0px; */
-    /* left: 0px; */
+    top: 100%;
+    right: 0px;
     margin-top: 0px;
     background-color: #F9F9F9;
     border-radius: 10px;
@@ -265,10 +267,6 @@ body {
 .dropdown-container:hover .dropdown-content {
     display: block;
 }
-/* Show the dropdown when hovering over the button */
-/* .dropdown:hover .dropdown-content {
-    display: block;
-} */
 
 .dropdown-flex-container {
     display: flex;
@@ -290,30 +288,14 @@ li.dropdown-flex-item a {
     color: black;
 }
 
+h6 {
+    display: inline;
+}
 
-
-/* .dropdown-button:hover~.dropdown-content {
-    display: block;
-} */
-
-/* .dropdown-button:focus .dropdown-content {
-    display: block;
-} */
-
-/* .dropdown-button:active .dropdown-content {
-    display: block;
-} */
-
-
-
-
-  
 /* Style each list item */
 .dropdown-content li {
     text-align: center;
 }
-  
-
 
 .settings-icon {
     font-size: 40px;
@@ -333,9 +315,14 @@ li.dropdown-flex-item a {
     padding-top: 30%;
 }
 
-.notification h6 {
+/* .notification h6 {
     padding-left: 10px;
     font-weight: bold;
+} */
+
+.dropdown-content>h6 {
+    font-size: 1rem;
+    /* justify-content: center; */
 }
 
 .count-icon {
