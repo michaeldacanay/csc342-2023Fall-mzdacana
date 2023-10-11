@@ -293,7 +293,8 @@ changeSignBtn.addEventListener('click', e => {
             display.classList.remove('flash');
         }, 100);
     }
-        
+    
+    addedToHistory = false;
     e.target.blur();
 })
 

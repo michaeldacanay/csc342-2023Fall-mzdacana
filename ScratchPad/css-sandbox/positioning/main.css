@@ -1,0 +1,24 @@
+.dropdown-button {
+    border: 1px solid black;
+    width: 100px;
+    background-color: rgb(238, 238, 238);
+    cursor: pointer;
+}
+  
+/* Style for the dropdown menu */
+.dropdown-menu {
+    /* display: none; */
+    position: absolute;
+    top: 100%; Position below the button
+    left: 0; Start from the left edge of the button
+    max-width: 200px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+  
+/* Show the dropdown when the button is hovered */
+.dropdown-container:hover .dropdown-menu {
+    display: block;
+}
+
+/* .drop */
