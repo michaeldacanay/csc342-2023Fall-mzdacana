@@ -1,0 +1,96 @@
+h2 {
+    font-family: 'Verdana';
+    font-weight: bold;
+}
+
+* {
+    font-family: 'Verdana';
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.transaction-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 600px;
+    align-items: center;
+}
+
+.sender-recipient-flexbox-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.sender-recipient-flexbox-container > .flexbox-item {
+    flex: 1;
+    max-width: 300px;
+}
+
+#preview {
+    max-height: 200px;
+}
+
+.sender-container, .recipient-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#recipient-first-name {
+    width: 100px;
+}
+
+#sender-first-name, #sender-last-name {
+    width: 120px;
+}
+
+#recipient-first-name, #recipient-last-name {
+    width: 120px;
+}
+
+#message {
+    width: 250px;
+}
+
+#phone, #email {
+    width: 120px;
+}
+
+.payment-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 300px;
+    gap: 10px;
+}
+
+.row-flexbox-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+#cvv {
+    width: 50px;
+}
+
+#amount {
+    width: 110px;
+}
+
+.submit-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
