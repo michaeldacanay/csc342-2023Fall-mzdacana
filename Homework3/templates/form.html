@@ -4,26 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSC 342 HW3</title>
-    <script type="text/javascript">
-        function previewImage(event) {
-           var input = event.target;
-           var image = document.getElementById('preview');
-           if (input.files && input.files[0]) {
-              var reader = new FileReader();
-              reader.onload = function(e) {
-                 image.src = e.target.result;
-              }
-              reader.readAsDataURL(input.files[0]);
-           }
-        }
-     </script>
-     <style>
-        #preview {
-           width: 300px;
-           height: 300px;
-        }
-     </style>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <form>
@@ -32,16 +13,16 @@
                 <div class="flexbox-item sender-container">
                     <h2>Sender Details</h2>
                     <img id="preview" src="images/placeholder.png" alt="Preview Image">
-                    <input type="file" accept="image/*" onchange="previewImage(event)">
+                    <input type="file" accept="image/*" onchange="previewImage(event)" required>
                     
                     <div class="row-flexbox-container">
                         <div class="flexbox-item">
                             <label for="sender-first-name">First Name:</label>
-                            <input type="text" id="sender-first-name" name="sender-first-name">
+                            <input type="text" id="sender-first-name" name="sender-first-name" required>
                         </div>
                         <div class="flexbox-item">
                             <label for="sender-last-name">Last Name:</label>
-                            <input type="text" id="sender-last-name" name="sender-last-name">
+                            <input type="text" id="sender-last-name" name="sender-last-name" required>
                         </div>
                     </div>
                 </div>
@@ -51,30 +32,30 @@
                     <div class="row-flexbox-container">
                         <div class="flexbox-item">
                             <label>First Name:</label>
-                            <input type="text" id="recipient-first-name" name="recipient-first-name">
+                            <input type="text" id="recipient-first-name" name="recipient-first-name" required>
                         </div>
                         <div class="flexbox-item">
                             <label>Last Name:</label>
-                            <input type="text" id="recipient-last-name" name="recipient-last-name">
+                            <input type="text" id="recipient-last-name" name="recipient-last-name" required>
                         </div>
                     </div>
                     
                                         
                     <label>Message</label>
-                    <textarea name="message" rows="10" cols="40"></textarea>
+                    <textarea name="message" minlength="10" rows="10" cols="40" required></textarea>
                     
                     <label>Notify Recipient:</label>
                     <div class="row-flexbox-container">
                         <div class="flexbox-item">
-                            <input type="radio" id="email-radio" name="notification">
+                            <input type="radio" id="email-radio" name="notification-method" value="email" required>
                             <label>Email</label>
                         </div>
                         <div class="flexbox-item">
-                            <input type="radio" id="sms-radio" name="notification">
+                            <input type="radio" id="sms-radio" name="notification-method" value="sms" required>
                             <label>SMS</label>
                         </div>
                         <div class="flexbox-item">
-                            <input type="radio" id="donotnotify-radio" name="notification">
+                            <input type="radio" id="donotnotify-radio" name="notification-method" value="none" required>
                             <label>Do not notify</label>
                         </div>
                     </div>
@@ -82,7 +63,7 @@
                     <div class="row-flexbox-container">
                         <div class="flexbox-item">
                             <label>Email:</label>
-                            <input type="text" id="email" name="email">
+                            <input type="email" id="email" name="email">
                         </div>
                         <div class="flexbox-item">
                             <label>Phone Number:</label>
@@ -98,26 +79,31 @@
                 <div class="row-flexbox-container">
                     <div class="flexbox-item">
                         <label for="card-type">Card Type:</label>
-                        <input type="select" id="card-type" name="card-type">
+                        <select id="card-type" name="card-type" required>
+                            <option value="visa">Visa</option>
+                            <option value="mastercard">Mastercard</option>
+                            <option value="amex">American Express</option>
+                            <option value="discover">Discover</option>
+                        </select>
                     </div>
                     <div class="flexbox-item">
                         <label>Card Number:</label>
-                        <input type="text" id="card-number" name="card-number">
+                        <input type="text" id="card-number" name="card-number" pattern="\d{4}-\d{4}-\d{4}-\d{4}" placeholder="XXXX-XXXX-XXXX-XXXX" required>
                     </div>
                 </div>
                 
                 <div class="row-flexbox-container">
                     <div class="flexbox-item">
                         <label>Expiration Date:</label>
-                        <input type="date" id="expiration-date" name="expiration-date">
+                        <input type="date" id="expiration-date" name="expiration-date" required>
                     </div>
                     <div class="flexbox-item">
                         <label>CVV:</label>
-                        <input type="password" id="cvv" name="cvv">
+                        <input type="password" id="cvv" name="cvv" min="3" max="4" autocomplete="cvv" required>
                     </div>
                     <div class="flexbox-item">
                         <label>Amount ($):</label>
-                        <input type="number" id="amount" name="amount">
+                        <input type="number" id="amount" name="amount" step="0.01" required>
                     </div>
                 </div>
                 
@@ -125,12 +111,15 @@
     
             <div class="submit-container">
                 <div class="flexbox-item">
-                    <input type="checkbox" id="agree-to-terms" name="agree-to-terms">
+                    <input type="checkbox" id="agree-to-terms" name="agree-to-terms" required>
                     <label for="agree-to-terms">I agree to the Terms and Conditions</label>
                 </div>
-                <input type="submit" value="Send">
+                <input type="submit" id="submit" value="Send">
             </div>
         </div>
     </form>
+
+    <script src="js/form.js" type="text/javascript"></script>
+    <script src="js/validate.js" type="text/javascript"></script>
 </body>
 </html>
