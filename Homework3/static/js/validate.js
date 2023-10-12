@@ -3,8 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('form');
     const senderFirstName = document.querySelector('#sender-first-name');
     const senderLastName = document.querySelector('#sender-last-name');
-    let recipientFirstName = document.querySelector('#recipient-first-name');
+    const recipientFirstName = document.querySelector('#recipient-first-name');
     const recipientLastName = document.querySelector('#recipient-last-name');
+    // const notificationMethod = document.querySelector('.notification-method');
+    const selectedNotifyRadio = document.querySelector('input[name="notification-method"]:checked');
+    const emailRadio = document.querySelector('#email-radio')
+    const smsRadio = document.querySelector('#sms-radio')
+    const email = document.querySelector('#email');
+    const phone = document.querySelector('#phone');
     const expirationDate = document.querySelector('#expiration-date');
     const cvv = document.querySelector('#cvv');
     const submit = document.querySelector('#submit');
@@ -13,14 +19,26 @@ document.addEventListener('DOMContentLoaded', () => {
   
     form.addEventListener("submit", e => {
         let expirationDateInput = new Date(expirationDate.value);
-        // Create a Date object for today
-        let today = new Date();
+        let today = new Date(); // Create a Date object for today
 
         // Compare the input date with today's date
-        if (expirationDateInput >= today) {
-            console.log('The input date is today or in the future.');
-        } else {
-            alert("Credit card is expired");
+        if (expirationDateInput < today) {
+            e.preventDefault();
+            console.log('email radio', emailRadio.checked);
+            console.log('sms radio', smsRadio.checked);
+            console.log('email ', email.value.length);
+            console.log('email.value.length === 0', email.value.length === 0);
+            console.log('sms ', phone.value);
+            alert("Credit card is expired.");
+        }
+
+        if (emailRadio.checked && email.value.length === 0) {
+            alert("Please enter email.");
+            e.preventDefault();
+        }
+
+        if (smsRadio.checked && phone.value.length === 0) {
+            alert("Please enter phone number.");
             e.preventDefault();
         }
 
@@ -47,6 +65,5 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
         }
     });
-    
 });
 

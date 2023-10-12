@@ -45,7 +45,7 @@
                     <textarea name="message" minlength="10" rows="10" cols="40" required></textarea>
                     
                     <label>Notify Recipient:</label>
-                    <div class="row-flexbox-container">
+                    <div class="row-flexbox-container" id="notify-recipient">
                         <div class="flexbox-item">
                             <input type="radio" id="email-radio" name="notification-method" value="email" required>
                             <label>Email</label>
@@ -99,7 +99,7 @@
                     </div>
                     <div class="flexbox-item">
                         <label>CVV:</label>
-                        <input type="password" id="cvv" name="cvv" min="3" max="4" autocomplete="cvv" required>
+                        <input type="password" id="cvv" name="cvv" min="3" max="4" required>
                     </div>
                     <div class="flexbox-item">
                         <label>Amount ($):</label>
