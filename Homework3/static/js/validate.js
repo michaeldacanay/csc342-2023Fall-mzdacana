@@ -5,8 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const senderLastName = document.querySelector('#sender-last-name');
     const recipientFirstName = document.querySelector('#recipient-first-name');
     const recipientLastName = document.querySelector('#recipient-last-name');
-    // const notificationMethod = document.querySelector('.notification-method');
-    const selectedNotifyRadio = document.querySelector('input[name="notification-method"]:checked');
+    // const selectedNotifyRadio = document.querySelector('input[name="notification-method"]:checked');
     const emailRadio = document.querySelector('#email-radio')
     const smsRadio = document.querySelector('#sms-radio')
     const email = document.querySelector('#email');
@@ -24,11 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Compare the input date with today's date
         if (expirationDateInput < today) {
             e.preventDefault();
-            console.log('email radio', emailRadio.checked);
-            console.log('sms radio', smsRadio.checked);
-            console.log('email ', email.value.length);
-            console.log('email.value.length === 0', email.value.length === 0);
-            console.log('sms ', phone.value);
             alert("Credit card is expired.");
         }
 

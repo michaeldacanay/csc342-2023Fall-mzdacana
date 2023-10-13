@@ -20,7 +20,7 @@ app.get("/",(req, res) => {
     res.sendFile(html_dir + "form.html");
 });
 
-app.post("/send", upload.single('myfile'), (req, res) => {
+app.post("/send", upload.single('sender-image'), (req, res) => {
     console.log("Query", req.query);
     console.log("Body", req.body);
     console.log("File", req.file);

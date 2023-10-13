@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <form>
+    <form method="post" enctype="multipart/form-data" action="/send">
         <div class="transaction-container">
             <div class="sender-recipient-flexbox-container">
                 <div class="flexbox-item sender-container">
                     <h2>Sender Details</h2>
                     <img id="preview" src="images/placeholder.png" alt="Preview Image">
-                    <input type="file" accept="image/*" onchange="previewImage(event)" required>
+                    <input type="file" name="sender-image" accept="image/*" onchange="previewImage(event)" required>
                     
                     <div class="row-flexbox-container">
                         <div class="flexbox-item">
