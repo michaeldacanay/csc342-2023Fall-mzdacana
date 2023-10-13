@@ -18,3 +18,14 @@ services:
     restart: unless-stopped
     volumes:
       - ./Homework2:/usr/local/apache2/htdocs
+
+  hw3:
+    build:
+      context: ./Homework3  # Set the build context to the Homework3 directory
+      dockerfile: Dockerfile
+    image: hw3-express-app  # Specify the desired image name
+    ports:
+      - "3000:3000" # Map the container's port to the host machine
+    restart: unless-stopped
+    volumes:
+      - ./Homework3:/uploads
