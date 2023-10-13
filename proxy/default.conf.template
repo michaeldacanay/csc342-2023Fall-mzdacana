@@ -62,8 +62,4 @@ server {
 
     } # end location
 
-
-
-
-
 }
