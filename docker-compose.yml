@@ -29,4 +29,4 @@ services:
     restart: unless-stopped
     volumes:
       - ./Homework3/static:/app/static
-      
+      - ./Homework3/server.js:/app/server.js
