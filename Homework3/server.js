@@ -75,8 +75,6 @@ app.post("/send", upload.single('sender-image'), (req, res) => {
 
         const expirationDate = new Date(req.body['expiration-date']);
         const currentDate = new Date(); // Get the current date
-        // expirationDate.setHours(0, 0, 0, 0);
-        // currentDate.setHours(0, 0, 0, 0);
         if (expirationDate < currentDate) {
             throw new Error('card is expired');
         }
@@ -94,23 +92,6 @@ app.post("/send", upload.single('sender-image'), (req, res) => {
         if(req.body['agree-to-terms'] == "" || !('agree-to-terms' in req.body)) {
             throw new Error("must agree to terms");
         }
-        // need more validation for remaining fields
-        // 'sender-first-name': 'Manny',
-        // 'sender-last-name': 'Dacanay',
-        // 'recipient-first-name': 'Manny',
-        // 'recipient-last-name': 'Dacanay',
-        // message: 'hello world',
-        // 'notification-method': 'email',
-        // email: 'mdacanay@hotmail.com',
-        // phone: '9197817830',
-        // 'card-type': 'visa',
-        // 'card-number': '1111-2222-3333-4444',
-        // 'expiration-date': '2023-10-14',
-        // cvv: '123',
-        // amount: '123',
-        // 'agree-to-terms': 'on'
-
-        
 
         let data = {
             senderFirstName: req.body['sender-first-name'],
@@ -137,7 +118,6 @@ app.post("/send", upload.single('sender-image'), (req, res) => {
     catch(err) {
         res.send("Validation Failed. " + err);
     }
-
     
 });
 
