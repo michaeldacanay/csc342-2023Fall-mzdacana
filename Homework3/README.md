@@ -4,4 +4,4 @@
 
 Payments
 
-[Form](https://csc342-112.csc.ncsu.edu/form.html)
+[Form](https://csc342-112.csc.ncsu.edu)
