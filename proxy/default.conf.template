@@ -3,6 +3,9 @@ server {
     listen [::]:80 default_server;
     server_name _;
 
+    # Set the maximum request body size to 20MB (you can adjust this to your needs)
+    client_max_body_size 20M;
+    
     location / {
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
