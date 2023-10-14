@@ -5,7 +5,7 @@ const multer = require('multer');
 const upload = multer({dest: 'static/uploads/'});
 
 const app = express();  // Create a new server instance
-const PORT = 3000;  // Port number we want to use of this server
+const PORT = 80;  // Port number we want to use of this server
 
 const html_dir = __dirname + '/templates/';
 

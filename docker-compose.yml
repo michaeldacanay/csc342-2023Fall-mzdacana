@@ -24,10 +24,10 @@ services:
       context: ./Homework3  # Set the build context to the Homework3 directory
       dockerfile: Dockerfile
     image: hw3-express-app  # Specify the desired image name
-    ports:
-      - "3000:80" # Map the container's port to the host machine
+    # ports:
+    #   - "3000:80" # Map the container's port to the host machine
     restart: unless-stopped
-    volumes:
-      - ./Homework3/static:/app/static
-      - ./Homework3/templates:/app/templates
-      - ./Homework3/server.js:/app/server.js
+    # volumes:
+    #   - ./Homework3/static:/app/static
+    #   - ./Homework3/templates:/app/templates
+    #   - ./Homework3/server.js:/app/server.js
