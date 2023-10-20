@@ -13,6 +13,18 @@ A short (~5 min but no longer than 10 min; no minimum) screencast with the proje
 
 
 ## Change Log
+
+**Revision 2**:  
+
+Part 2:
+- updated dropdown appearance on hover
+
+
+**Feedback from Review 2**:
+
+I have taken a look at your work and can see that you have taken most of the feedback into account and made appropriate changes which is great ! In part 2, the dropdowns are not being displayed on hover which is something you can work on.
+
+
 Part 1:
 
 - more semantic tags to Part 1
