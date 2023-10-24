@@ -7,11 +7,12 @@ A basic web-based calculator with computation history, using Javascript, DOM man
 [Calculator](https://csc342-112.csc.ncsu.edu/calculator.html)
 
 
-Changelog
+## Change Log
 
-Resubmission #1:
+**Revision 1**:  
+- improve UI
 
-Feedback:  
+**Feedback from Review 1**:  
 UI
 
 I think you can do better with the look of your calculator. It's currently smaller than the space available for it. Moreover, It appears unstyled. 
