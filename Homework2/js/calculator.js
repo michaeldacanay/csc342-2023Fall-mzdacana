@@ -6,18 +6,6 @@ let hasDecimal = false;
 let error = false;
 let addedToHistory = false;
 
-// for (let i = 0; i < 10; i++) {
-//     // Create new div element
-//     const div = document.createElement("div");
-    
-//     // Add class, id, and text
-//     div.classList.add("history-item");
-//     div.id = "history-item" + (i + 1);
-//     div.textContent = "This is div number " + (i + 1);
-
-//     // Append the div to the history-list-container
-//     history.appendChild(div);
-// }
 const clearHistoryBtn = document.querySelector('.history-clear');
 
 clearHistoryBtn.addEventListener('click', e => {
@@ -30,33 +18,35 @@ clearHistoryBtn.addEventListener('click', e => {
 });
 
 const display = document.querySelector('.calc-grid-item-display')
+const calcBtns = document.querySelectorAll('.calc-btn')
 
 // numbers
-const numberBtns = document.querySelectorAll('.number');
-const btn1 = document.querySelector('.calc-grid-item-1');
-const btn2 = document.querySelector('.calc-grid-item-2');
-const btn3 = document.querySelector('.calc-grid-item-3');
-const btn4 = document.querySelector('.calc-grid-item-4');
-const btn5 = document.querySelector('.calc-grid-item-5');
-const btn6 = document.querySelector('.calc-grid-item-6');
-const btn7 = document.querySelector('.calc-grid-item-7');
-const btn8 = document.querySelector('.calc-grid-item-8');
-const btn9 = document.querySelector('.calc-grid-item-9');
-const btn0 = document.querySelector('.calc-grid-item-0');
+// const numberBtns = document.querySelectorAll('.number');
+// const btn1 = document.querySelector('.calc-grid-item-1');
+// const btn2 = document.querySelector('.calc-grid-item-2');
+// const btn3 = document.querySelector('.calc-grid-item-3');
+// const btn4 = document.querySelector('.calc-grid-item-4');
+// const btn5 = document.querySelector('.calc-grid-item-5');
+// const btn6 = document.querySelector('.calc-grid-item-6');
+// const btn7 = document.querySelector('.calc-grid-item-7');
+// const btn8 = document.querySelector('.calc-grid-item-8');
+// const btn9 = document.querySelector('.calc-grid-item-9');
+// const btn0 = document.querySelector('.calc-grid-item-0');
 
 // operators
-const operatorBtns = document.querySelectorAll('.operator')
-const divBtn = document.querySelector('.calc-grid-item-div')
-const mulBtn = document.querySelector('.calc-grid-item-mul')
-const subBtn = document.querySelector('.calc-grid-item-sub')
-const addBtn = document.querySelector('.calc-grid-item-add')
+// const operatorBtns = document.querySelectorAll('.operator')
+// const divBtn = document.querySelector('.calc-grid-item-div')
+// const mulBtn = document.querySelector('.calc-grid-item-mul')
+// const subBtn = document.querySelector('.calc-grid-item-sub')
+// const addBtn = document.querySelector('.calc-grid-item-add')
 
 // special buttons
-const clearBtn = document.querySelector('.calc-grid-item-c')
-const eqBtn = document.querySelector('.calc-grid-item-eq')
-const decBtn = document.querySelector('.calc-grid-item-dec')
-const changeSignBtn = document.querySelector('.calc-grid-item-sign')
+// const clearBtn = document.querySelector('.calc-grid-item-c')
+// const eqBtn = document.querySelector('.calc-grid-item-eq')
+// const decBtn = document.querySelector('.calc-grid-item-dec')
+// const changeSignBtn = document.querySelector('.calc-grid-item-sign')
 
+// finite state machine: number
 function processNumber(num) {
     console.log('IN processNumber')
     if (error) {
@@ -79,15 +69,51 @@ function processNumber(num) {
     console.log('number-currentAction-after', currentAction)
 }
 
-numberBtns.forEach(numberBtn => {
-    numberBtn.addEventListener('click', e => {
+calcBtns.forEach(calcBtn => {
+    calcBtn.addEventListener('click', e => {
         console.log('Button', e.target.textContent, 'was clicked!');
-        processNumber(e.target.textContent)
+        // flash display color
+        const text = e.target.innerText;
+        const operators = ['/', 'x', '-', '+'];
+
+        // e.target.textContent and e.target.innerText are interchangeable for the most part in a button
+        if (!isNaN(+text)) {
+            processNumber(e.target.textContent);
+        } else if (operators.includes(text)) {
+            processOperator(e.target.textContent);
+        } else {
+            switch (text) {
+                case 'C':
+                    processC();
+                    break;
+                case '=':
+                    processEquals();
+                    break;
+                case '.':
+                    processDecimal();
+                    break;
+                case '+/-':
+                    processChangeSign();
+                    break;
+                default:
+                    break;
+            }
+        }
 
         // Remove focus from the button
         e.target.blur();
     });
 });
+
+// numberBtns.forEach(numberBtn => {
+//     numberBtn.addEventListener('click', e => {
+//         console.log('Button', e.target.textContent, 'was clicked!');
+//         processNumber(e.target.textContent)
+
+//         // Remove focus from the button
+//         e.target.blur();
+//     });
+// });
 
 function processOperator(op) {
     console.log('IN processOperator')
@@ -150,13 +176,13 @@ function processOperator(op) {
     currentAction = 'operator';
 }
 
-operatorBtns.forEach(operatorBtn => {
-    operatorBtn.addEventListener('click', e => {
-        console.log('Button', e.target.textContent, 'was clicked!');
-        processOperator(e.target.textContent);
-        e.target.blur();
-    });
-});
+// operatorBtns.forEach(operatorBtn => {
+//     operatorBtn.addEventListener('click', e => {
+//         console.log('Button', e.target.textContent, 'was clicked!');
+//         processOperator(e.target.textContent);
+//         e.target.blur();
+//     });
+// });
 
 // handle divide by 0
 // btn0.addEventListener('click', e => {
@@ -182,13 +208,13 @@ function processC() {
     error = false;
 }
 
-clearBtn.addEventListener('click', e => {
-    console.log('Button', e.target.textContent, 'was clicked!');
-    processC();
+// clearBtn.addEventListener('click', e => {
+//     console.log('Button', e.target.textContent, 'was clicked!');
+//     processC();
 
-    // Remove focus from the button
-    e.target.blur();
-});
+//     // Remove focus from the button
+//     e.target.blur();
+// });
 
 function processEquals() {
     console.log('IN processEquals')
@@ -248,11 +274,11 @@ function processEquals() {
     addedToHistory = true;
 }
 
-eqBtn.addEventListener('click', e => {
-    console.log('Button', e.target.textContent, 'was clicked!');
-    processEquals();
-    e.target.blur();
-});
+// eqBtn.addEventListener('click', e => {
+//     console.log('Button', e.target.textContent, 'was clicked!');
+//     processEquals();
+//     e.target.blur();
+// });
 
 function processDecimal() {
     if (error) {
@@ -272,15 +298,13 @@ function processDecimal() {
     }
 }
 
-decBtn.addEventListener('click', e => {
-    console.log('Button', e.target.textContent, 'was clicked!');
-    processDecimal();
-    e.target.blur();
-});
+// decBtn.addEventListener('click', e => {
+//     console.log('Button', e.target.textContent, 'was clicked!');
+//     processDecimal();
+//     e.target.blur();
+// });
 
-
-changeSignBtn.addEventListener('click', e => {
-    console.log('Button', e.target.textContent, 'was clicked!');
+function processChangeSign() {
     if (error) {
         return
     }
@@ -295,11 +319,27 @@ changeSignBtn.addEventListener('click', e => {
     }
     
     addedToHistory = false;
-    e.target.blur();
-})
+}
 
 
+// changeSignBtn.addEventListener('click', e => {
+//     console.log('Button', e.target.textContent, 'was clicked!');
+//     if (error) {
+//         return
+//     }
 
+//     if (currentAction != 'operator') {
+//         display.textContent = display.textContent * -1;
+//         // flash display color
+//         display.classList.add('flash');
+//         setTimeout(() => {
+//             display.classList.remove('flash');
+//         }, 100);
+//     }
+    
+//     addedToHistory = false;
+//     e.target.blur();
+// })
 
 
 
