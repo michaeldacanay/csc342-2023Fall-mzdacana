@@ -10,7 +10,10 @@ A basic web-based calculator with computation history, using Javascript, DOM man
 ## Change Log
 
 **Revision 1**:  
-- improve UI
+
+- Center calculator horizontally on screen and increase font size
+- Apply calc-btn class to all buttons, check if the button is a digit, operator, etc. via innerText using single click event handler
+- Make cursor a pointer when hovering over history item
 
 **Feedback from Review 1**:  
 UI
