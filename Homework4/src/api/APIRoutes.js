@@ -75,6 +75,7 @@ apiRouter.get('/users/:userId', (req, res) => {
   });
 });
 
+
 //Get specific howl
 apiRouter.get('/howls/:howlId', (req, res) => {
   const howlId = req.params.howlId;
@@ -106,19 +107,55 @@ apiRouter.get('/users/:userId/howls', (req, res) => {
 //Get howls posted by all users followed by "current" user
 apiRouter.get('/users/:userId/following/howls', (req, res) => {
   const userId = req.params.userId;
-  FollowDAO.getFollowingByUserId(userId).then(follows => {
-    let howls = [];
-    follows.forEach(follow => {
-      HowlDAO.getHowlsByUserId(follow).then(userHowls => {
-        howls = howls.concat(userHowls);
-      })
-      .catch(err => {
-        res.status(500).json({error: 'Internal server error'});
+  console.log('/users/:userId/following/howls userId: ', userId);
+
+  FollowDAO.getFollowingByUserId(userId)
+    .then(follows => {
+      console.log('follows: ', follows);
+      
+      // Map follows to an array of promises
+      const howlPromises = follows.map(follow => {
+        return HowlDAO.getHowlsByUserId(follow);
       });
+      
+      // Wait for all promises to resolve
+      return Promise.all(howlPromises);
+    })
+    .then(results => {
+      // Flatten the array of arrays into a single array
+      const howls = [].concat(...results);
+      console.log('howls: ', howls);
+      
+      res.json(howls);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({ error: 'Internal server error' });
     });
-    res.json(howls);
-  });
 });
+
+// apiRouter.get('/users/:userId/following/howls', (req, res) => {
+//   const userId = req.params.userId;
+//   console.log('/users/:userId/following/howls userId: ', userId);
+//   FollowDAO.getFollowingByUserId(userId).then(follows => {
+//     console.log('follows: ', follows);
+//     let howls = [];
+//     follows.forEach(follow => {
+//       HowlDAO.getHowlsByUserId(follow).then(userHowls => {
+//         console.log('userHowls: ', userHowls);
+//         console.log('howls: ', howls);
+//         howls = howls.concat(userHowls);
+        
+//       })
+//       .catch(err => {
+//         res.status(500).json({error: 'Internal server error'});
+//       });
+//     });
+
+//     // after forEach is done
+//     res.json(howls);
+//   });
+// });
 
 //Get all users followed by specific user
 apiRouter.get('/users/:userId/following', (req, res) => {

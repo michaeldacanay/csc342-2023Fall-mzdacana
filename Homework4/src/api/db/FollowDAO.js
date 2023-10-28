@@ -39,7 +39,9 @@ module.exports = {
             // let userFollows = follows[userId].following;
             // don't have to account for if userId is new because there is no create account functionality
             if(userId in follows) {
-                follows[userId].following.push(followingId);
+                if (!follows[userId].following.includes(followingId)) {
+                    follows[userId].following.push(followingId);
+                }
                 resolve(follows[userId]);
             }
             else {
