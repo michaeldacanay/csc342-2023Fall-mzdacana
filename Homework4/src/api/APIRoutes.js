@@ -5,16 +5,16 @@ const apiRouter = express.Router();
 /************\
 * API ROUTES *
 \************/
-
-const CountyDAO = require('./db/CountyDAO');
-const ParkDAO = require('./db/ParkDAO');
+const FollowDAO = require('./db/FollowDAO');
+const HowlDAO = require('./db/HowlDAO');
+const UserDAO = require('./db/UserDAO');
 
 apiRouter.use(express.json());
 
 //Get all counties
-apiRouter.get('/counties', (req,  res) => {
-  CountyDAO.getCounties().then(counties => {
-    res.json(counties);
+apiRouter.get('/follows', (req,  res) => {
+  FollowDAO.getFollows().then(follows => {
+    res.json(follows);
   })
   .catch(err => {
     res.status(500).json({error: 'Internal server error'});
@@ -22,9 +22,9 @@ apiRouter.get('/counties', (req,  res) => {
 });
 
 //Get all parks
-apiRouter.get('/parks', (req,  res) => {
-  ParkDAO.getParks().then(parks => {
-    res.json(parks);
+apiRouter.get('/howls', (req,  res) => {
+  HowlDAO.getHowls().then(howls => {
+    res.json(howls);
   })
   .catch(err => {
     res.status(500).json({error: 'Internal server error'});

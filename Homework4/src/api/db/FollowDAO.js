@@ -9,7 +9,7 @@ module.exports = {
         });
     },
 
-    getFollow: () => {
+    getFollowById: (id) => {
         return new Promise((resolve, reject) => {
             const follow = follows.find(follow => follow.id == id);
             if(follow) {

@@ -7,6 +7,9 @@ frontendRouter.use(express.static('static'));
 const path = require('path');
 const html_dir = path.join(__dirname, '../../templates/');
 
+/*****************\
+* FRONTEND ROUTES *
+\*****************/
 frontendRouter.get('/', (req, res) => {
   res.sendFile(`${html_dir}index.html`);
 });
