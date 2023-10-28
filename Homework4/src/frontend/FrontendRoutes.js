@@ -11,12 +11,12 @@ frontendRouter.get('/', (req, res) => {
   res.sendFile(`${html_dir}index.html`);
 });
 
-frontendRouter.get('/park', (req,  res) => {
+frontendRouter.get('/profile', (req,  res) => {
   if(req.query.id && req.session.visitedParks && !req.session.visitedParks.includes(req.query.id)) {
     req.session.visitedParks.push(req.query.id);
   }
   
-  res.sendFile(`${html_dir}park.html`);
+  res.sendFile(`${html_dir}profile.html`);
 });
 
 
