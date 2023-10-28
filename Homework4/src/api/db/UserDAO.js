@@ -1,4 +1,4 @@
-let users = require('../data/users.json');
+let users = require('./data/users.json');
 
 //This file mimics making asynchronous request to a database
 

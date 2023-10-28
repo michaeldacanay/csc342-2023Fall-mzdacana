@@ -1,4 +1,4 @@
-let follows = require('../data/follows.json');
+let follows = require('./data/follows.json');
 
 //This file mimics making asynchronous request to a database
 

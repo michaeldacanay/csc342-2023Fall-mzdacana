@@ -4,5 +4,5 @@
 I faced a challenge in understanding the routes, data access objects, etc. There seems to be a lot of layers from the client frontend to api backend to json data.
 
 2. What additional feature would you add to Howler, and how would you suggest it should be implemented?  
-
+Probably adding features like deleting howls, creating new users, etc.
 

@@ -1,4 +1,4 @@
-let howls = require('../data/howls.json');
+let howls = require('./data/howls.json');
 
 //This file mimics making asynchronous request to a database
 
