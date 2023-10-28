@@ -11,6 +11,23 @@ const UserDAO = require('./db/UserDAO');
 
 apiRouter.use(express.json());
 
+//Login a user
+apiRouter.get('/login/:username', (req, res) => {
+  const username = req.params.username;
+  UserDAO.getUser(username).then(user => {
+    if(user) {
+      // req.session.user = user;
+      res.json(user);
+    }
+    else {
+      res.status(404).json({error: 'User not found'});
+    }
+  })
+  .catch(err => {
+    res.status(500).json({error: 'Internal server error'});
+  });
+});
+
 //Get all follows
 apiRouter.get('/follows', (req, res) => {
   FollowDAO.getFollows().then(follows => {

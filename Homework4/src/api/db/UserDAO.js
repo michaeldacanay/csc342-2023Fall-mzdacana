@@ -19,5 +19,17 @@ module.exports = {
                 reject();
             }
         });
-    }
+    },
+
+    getUser: (username) => {
+        return new Promise((resolve, reject) => {
+            const user = users.find(user => user.username == username);
+            if(user) {
+                resolve(user);
+            }
+            else {
+                reject();
+            }
+        });
+    },
 };
