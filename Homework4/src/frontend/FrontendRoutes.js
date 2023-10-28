@@ -27,9 +27,9 @@ frontendRouter.get('/error', (req, res) => {
   res.sendFile(`${html_dir}error.html`);
 });
 
-frontendRouter.get('/login', (req,  res) => {
+frontendRouter.get('/login', (req, res) => {
   console.log(req.session);
-  req.session.user = "student";
+  req.session.user = req.query.username;
   res.redirect(302, `/`);
 });
 

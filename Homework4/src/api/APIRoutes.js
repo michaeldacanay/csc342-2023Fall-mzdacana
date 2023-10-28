@@ -11,6 +11,16 @@ const UserDAO = require('./db/UserDAO');
 
 apiRouter.use(express.json());
 
+//Get current authenticated user
+apiRouter.get('/users/current', (req, res) => {
+  if(req.session.user) {
+    res.json(req.session.user);
+  }
+  else {
+    res.status(401).json({error: 'Not authenticated'});
+  }
+});
+
 //Login a user
 apiRouter.get('/login/:username', (req, res) => {
   const username = req.params.username;
@@ -27,6 +37,8 @@ apiRouter.get('/login/:username', (req, res) => {
     res.status(500).json({error: 'Internal server error'});
   });
 });
+
+
 
 //Logout current user
 apiRouter.post('/logout', (req, res) => {
