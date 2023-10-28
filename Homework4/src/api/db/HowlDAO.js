@@ -19,5 +19,25 @@ module.exports = {
                 reject();
             }
         });
-    }
+    },
+
+    getHowlsByUserId: (userId) => {
+        return new Promise((resolve, reject) => {
+            const howls = howls.filter(howl => howl.userId == userId);
+            if(howls) {
+                resolve(howls);
+            }
+            else {
+                reject();
+            }
+        });
+    },
+
+    createHowl: (howl) => {
+        const howlId = howls.length + 1;
+        return new Promise((resolve, reject) => {
+            howls.push(howl);
+            resolve(howl);
+        });
+    },
 };

@@ -11,8 +11,8 @@ const UserDAO = require('./db/UserDAO');
 
 apiRouter.use(express.json());
 
-//Get all counties
-apiRouter.get('/follows', (req,  res) => {
+//Get all follows
+apiRouter.get('/follows', (req, res) => {
   FollowDAO.getFollows().then(follows => {
     res.json(follows);
   })
@@ -21,8 +21,8 @@ apiRouter.get('/follows', (req,  res) => {
   });
 });
 
-//Get all parks
-apiRouter.get('/howls', (req,  res) => {
+//Get all howls
+apiRouter.get('/howls', (req, res) => {
   HowlDAO.getHowls().then(howls => {
     res.json(howls);
   })
@@ -31,15 +31,26 @@ apiRouter.get('/howls', (req,  res) => {
   });
 });
 
-//Get specific park
-apiRouter.get('/parks/:parkId', (req,  res) => {
-  const parkId = req.params.parkId;
-  ParkDAO.getParkById(parkId).then(park => {
-    if(park) {
-      res.json(park);
+//Get all users
+apiRouter.get('/users', (req, res) => {
+  UserDAO.getUsers().then(users => {
+    res.json(users);
+  })
+  .catch(err => {
+    res.status(500).json({error: 'Internal server error'});
+  });
+});
+
+
+//Get specific user
+apiRouter.get('/users/:userId', (req, res) => {
+  const userId = req.params.userId;
+  UserDAO.getUserById(userId).then(user => {
+    if(user) {
+      res.json(user);
     }
     else {
-      res.status(404).json({error: 'Park not found'});
+      res.status(404).json({error: 'User not found'});
     }
   })
   .catch(err => {
@@ -47,27 +58,39 @@ apiRouter.get('/parks/:parkId', (req,  res) => {
   });
 });
 
-//Get all parks in specific county
-apiRouter.get('/counties/:county/parks', (req,  res) => {
-  const county = req.params.county;
-  ParkDAO.getParksByCounty(county).then(parks => {
-    res.json(parks);
+//Get all howls posted by specific user
+apiRouter.get('/users/:userId/howls', (req, res) => {
+  const userId = req.params.userId;
+  HowlDAO.getHowlsByUserId(userId).then(howls => {
+    res.json(howls);
   })
   .catch(err => {
     res.status(500).json({error: 'Internal server error'});
   });
 });
 
-//Get specific county
-apiRouter.get('/counties/:county', (req,  res) => {
-  const countyParam = req.params.county;
-  CountyDAO.getCounty(countyParam).then(county => {
-    if(county) {
-      res.json(county);
-    }
-    else {
-      res.status(404).json({error: 'County not found'});
-    }
+//Get howls posted by all users followed by "current" user
+apiRouter.get('/users/:userId/following/howls', (req, res) => {
+  const userId = req.params.userId;
+  FollowDAO.getFollowingByUserId(userId).then(follows => {
+    let howls = [];
+    follows.forEach(follow => {
+      HowlDAO.getHowlsByUserId(follow).then(userHowls => {
+        howls = howls.concat(userHowls);
+      })
+      .catch(err => {
+        res.status(500).json({error: 'Internal server error'});
+      });
+    });
+    res.json(howls);
+  });
+});
+
+//Get all users followed by specific user
+apiRouter.get('/users/:userId/following', (req, res) => {
+  const userId = req.params.userId;
+  FollowDAO.getFollowingByUserId(userId).then(follows => {
+    res.json(follows);
   })
   .catch(err => {
     res.status(500).json({error: 'Internal server error'});
@@ -75,22 +98,35 @@ apiRouter.get('/counties/:county', (req,  res) => {
 });
 
 
-//Create a park
-apiRouter.post('/parks', (req,  res) => {
-  let newPark = req.body;
-  ParkDAO.createPark(newPark).then(park => {
-    res.json(park);
+//Create a howl
+apiRouter.post('/howls', (req, res) => {
+  let newHowl = req.body;
+  HowlDAO.createHowl(newHowl).then(howl => {
+    res.json(howl);
   })
   .catch(err => {
     res.status(500).json({error: 'Internal server error'});
   });
 });
 
-//Create a county
-apiRouter.post('/counties', (req,  res) => {
-  let newCounty = req.body;
-  CountyDAO.createCounty(newCounty).then(county => {
-    res.json(county);
+//Following a user
+apiRouter.post('/following', (req, res) => {
+  let userId = req.body.userId;
+  let followingId = req.body.followingId;
+  FollowDAO.createFollow(userId, followingId).then(follow => {
+    res.json(follow);
+  })
+  .catch(err => {
+    res.status(500).json({error: 'Internal server error'});
+  });
+});
+
+//Unfollowing a user
+apiRouter.put('/unfollowing', (req, res) => {
+  let userId = req.body.userId;
+  let followingId = req.body.followingId;
+  FollowDAO.deleteFollow(userId, followingId).then(follow => {
+    res.json(follow);
   })
   .catch(err => {
     res.status(500).json({error: 'Internal server error'});

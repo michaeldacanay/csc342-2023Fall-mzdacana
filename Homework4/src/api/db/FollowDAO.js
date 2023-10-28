@@ -19,5 +19,46 @@ module.exports = {
                 reject();
             }
         });
-    }
+    },
+
+    getFollowingByUserId: (userId) => {
+        return new Promise((resolve, reject) => {
+            // Get users followed by user with given userId
+            const following = follows[userId].following;
+            if(following) {
+                resolve(following);
+            }
+            else {
+                reject();
+            }
+        });
+    },
+
+    createFollow: (userId, followingId) => {
+        return new Promise((resolve, reject) => {
+            // let userFollows = follows[userId].following;
+            // don't have to account for if userId is new because there is no create account functionality
+            if(userId in follows) {
+                follows[userId].following.push(followingId);
+                resolve(follows[userId]);
+            }
+            else {
+                reject();
+            }
+        });
+    },
+
+    deleteFollow: (userId, followingId) => {
+        return new Promise((resolve, reject) => {
+            // let userFollows = follows[userId].following;
+            // don't have to account for if userId is new because there is no create account functionality
+            if(userId in follows) {
+                follows[userId].following = follows[userId].following.filter(id => id !== followingId);
+                resolve(follows[userId]);
+            }
+            else {
+                reject();
+            }
+        });
+    },
 };
