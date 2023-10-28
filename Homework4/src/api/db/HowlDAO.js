@@ -35,9 +35,15 @@ module.exports = {
 
     createHowl: (howl) => {
         const howlId = howls.length + 1;
+        const newHowl = {
+            id: howlId,
+            userId: howl.userId,
+            datetime: howl.datetime,
+            text: howl.text,
+        };
         return new Promise((resolve, reject) => {
-            howls.push(howl);
-            resolve(howl);
+            howls.push(newHowl);
+            resolve(newHowl);
         });
     },
 };

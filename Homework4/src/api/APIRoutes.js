@@ -117,7 +117,19 @@ apiRouter.get('/users/:userId/following', (req, res) => {
 
 //Create a howl
 apiRouter.post('/howls', (req, res) => {
-  let newHowl = req.body;
+  const currentDate = new Date();
+  const datetimeString = currentDate.toISOString();
+  console.log(datetimeString);
+
+  const formattedDate = datetimeString.slice(0, -5) + 'Z';
+  console.log(formattedDate);
+
+  const newHowl = {
+    userId: req.body.userId,
+    datetime: formattedDate,
+    text: req.body.text,
+  };
+
   HowlDAO.createHowl(newHowl).then(howl => {
     res.json(howl);
   })
