@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Nunito, sans-serif;
 }
 
 h1 {
@@ -8,4 +8,10 @@ h1 {
 
 .card-title {
     font-weight: bold;
+}
+
+.row-flex-container {
+    display: flex;
+    justify-content: center; /* center items horizontally */
+    align-items: center;
 }
