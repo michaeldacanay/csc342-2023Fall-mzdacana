@@ -11,7 +11,7 @@ module.exports = {
 
     getHowlById: (id) => {
         return new Promise((resolve, reject) => {
-            const howl = howls.find(follow => follow.id == id);
+            const howl = howls.find(howl => howl.id == id);
             if(howl) {
                 resolve(howl);
             }
@@ -22,10 +22,11 @@ module.exports = {
     },
 
     getHowlsByUserId: (userId) => {
+        console.log('HowlDAO userId: ', userId);
         return new Promise((resolve, reject) => {
-            const howls = howls.filter(howl => howl.userId == userId);
-            if(howls) {
-                resolve(howls);
+            const filteredHowls = howls.filter(howl => howl.userId == userId);
+            if(filteredHowls) {
+                resolve(filteredHowls);
             }
             else {
                 reject();

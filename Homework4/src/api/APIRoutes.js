@@ -75,9 +75,26 @@ apiRouter.get('/users/:userId', (req, res) => {
   });
 });
 
+//Get specific howl
+apiRouter.get('/howls/:howlId', (req, res) => {
+  const howlId = req.params.howlId;
+  HowlDAO.getHowlById(howlId).then(howl => {
+    if(howl) {
+      res.json(howl);
+    }
+    else {
+      res.status(404).json({error: 'Howl not found'});
+    }
+  })
+  .catch(err => {
+    res.status(500).json({error: 'Internal server error'});
+  });
+});
+
 //Get all howls posted by specific user
 apiRouter.get('/users/:userId/howls', (req, res) => {
   const userId = req.params.userId;
+  console.log('userId: ', userId)
   HowlDAO.getHowlsByUserId(userId).then(howls => {
     res.json(howls);
   })
