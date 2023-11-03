@@ -35,3 +35,13 @@ services:
     image: hw4-express-app  # Specify the desired image name
     restart: unless-stopped
     
+  hw5:
+    build:
+      context: ./Homework5
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    image: hw5-app
+    restart: unless-stopped
+
+    
