@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 const base64url = require('base64url');
 const crypto = require('crypto');
 
@@ -55,7 +55,9 @@ exports.TokenMiddleware = (req, res, next) => {
       throw new Error('Invalid token signature');
     }
 
-    req.user = decoded.user;
+    req.user = data.user;
+    console.log("User: ", req.user);
+    // req.user = decoded.user;
     next(); //Make sure we call the next middleware
   }
   catch(err) { //Token is invalid
@@ -79,9 +81,9 @@ exports.generateToken = (req, res, user) => {
     exp: Math.floor(Date.now() / 1000) + (60 * 60)
   }
 
+  // const token = jwt.sign(data, API_SECRET);
   const base64header = base64url.encode(JSON.stringify(header));
   const base64payload = base64url.encode(JSON.stringify(data));
-  // const token = jwt.sign(data, API_SECRET);
   const hmacSignature = crypto.createHmac('sha256', API_SECRET).update(base64header + "." + base64payload).digest('hex');
   const token = base64header + "." + base64payload + "." + hmacSignature;
 
