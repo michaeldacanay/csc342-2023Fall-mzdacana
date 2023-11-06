@@ -4,7 +4,7 @@
 
 Payments
 
-[Form](https://csc342-112.csc.ncsu.edu)
+VM [Form](https://csc342-112.csc.ncsu.edu/hw3)
 
 Changelog:
 
