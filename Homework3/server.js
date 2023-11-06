@@ -37,8 +37,8 @@ app.post("/send", upload.single('sender-image'), (req, res) => {
         if(req.body['sender-last-name'] == "" || !('sender-last-name' in req.body)) {
             throw new Error("sender last name is required");
         }
-        if(req.body['recipient-last-name'] == "Dent" && (req.body['recipient-first-name'] == "Stu" || req.body['recipient-first-name'] == "Stuart")) {
-          throw new Error("Stu Dent is banned from receiving payment");
+        if (req.body['recipient-last-name'].toLowerCase() === "dent" && (req.body['recipient-first-name'].toLowerCase() === "stu" || req.body['recipient-first-name'].toLowerCase() === "stuart")) {
+            throw new Error("Stu Dent is banned from receiving payment");
         }
         if(req.body['recipient-first-name'] == "" || !('recipient-first-name' in req.body)) {
             throw new Error("recipient first name is required");
@@ -52,8 +52,16 @@ app.post("/send", upload.single('sender-image'), (req, res) => {
         if(req.body['notification-method'] == "" || !('notification-method' in req.body)) {
             throw new Error("notification method is required");
         }
-        if(req.body['notification-method'] == "email" && req.body['email'] == "") {
-            throw new Error("email is required");
+        if(req.body['notification-method'] == "email") {
+            if (req.body['email'] == "") {
+                throw new Error("email is required");
+            } else {
+                // Regular expression to validate email format
+                const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+                if (!emailRegex.test(req.body['email'])) {
+                    throw new Error("Please enter a valid email address");
+                }
+            }
         }
         if(req.body['notification-method'] == "sms" && req.body['phone'] == "") {
             throw new Error("phone is required for sms");
@@ -113,10 +121,10 @@ app.post("/send", upload.single('sender-image'), (req, res) => {
 
         // Render the hbs template with the dynamic content
         res.render('success', data); // 'success' corresponds to 'success.hbs'
-
     }
     catch(err) {
-        res.send("Validation Failed. " + err);
+        // res.send("Validation Failed. " + err);
+        res.render('error', { err: err }); // 'error' corresponds to 'error.hbs'
     }
     
 });

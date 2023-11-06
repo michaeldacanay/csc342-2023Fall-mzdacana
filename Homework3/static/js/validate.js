@@ -26,9 +26,18 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("Credit card is expired.");
         }
 
-        if (emailRadio.checked && email.value.length === 0) {
-            alert("Please enter email.");
-            e.preventDefault();
+        if (emailRadio.checked) {
+            if (email.value.length === 0) {
+                alert("Please enter email.");
+                e.preventDefault();
+            } else {
+                // Regular expression to validate email format
+                const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+                if (!emailRegex.test(email.value)) {
+                    alert("Please enter a valid email address.");
+                    // e.preventDefault();
+                }
+            }
         }
 
         if (smsRadio.checked && phone.value.length === 0) {
