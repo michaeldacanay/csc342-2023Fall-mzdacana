@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="col-flexbox-container">
-    <!-- <div>
-        <p class="flexbox-item">Form submitted</p>
-    </div> -->
     <p class="flexbox-item">Form submitted</p>
     <p>Payment Date: {{ currentDate }}</p>
     <div>
@@ -18,7 +15,7 @@
     
     <p>Sender First Name: {{ senderFirstName }}</p>
     <p>Sender Last Name: {{ senderLastName }}</p>
-    <img src="{{senderImagePath}}" alt="sender-image" width="200px">
+    <img src="{{ senderImagePath }}" alt="sender-image" width="200px">
     
     <p>Recipient First Name: {{ senderFirstName }}</p>
     <p>Recipient Last Name: {{ senderLastName }}</p>

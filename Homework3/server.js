@@ -9,6 +9,9 @@ const PORT = 80;  // Port number we want to use of this server
 
 const html_dir = __dirname + '/templates/';
 
+// Prepend /hw3 to all routes
+// const router = express.Router();
+// app.use('/hw3', router);
 
 // Set up Middleware
 
@@ -104,7 +107,7 @@ app.post("/send", upload.single('sender-image'), (req, res) => {
         let data = {
             senderFirstName: req.body['sender-first-name'],
             senderLastName: req.body['sender-last-name'],
-            senderImagePath: '/uploads/' + req.file['filename'],
+            senderImagePath: './uploads/' + req.file['filename'],
             recipientFirstName: req.body['recipient-first-name'],
             recipientLastName: req.body['recipient-last-name'],
             message: req.body.message,
