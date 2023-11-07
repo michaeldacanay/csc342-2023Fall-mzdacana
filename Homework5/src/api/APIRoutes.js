@@ -17,7 +17,7 @@ const ParkDAO = require('./db/ParkDAO');
 const UserDAO = require('./db/UserDAO');
 
 //Get all counties
-apiRouter.get('/counties', TokenMiddleware, (req,  res) => {
+apiRouter.get('/counties', TokenMiddleware, (req, res) => {
   CountyDAO.getCounties().then(counties => {
     res.json(counties);
   })
@@ -120,16 +120,19 @@ apiRouter.delete('/parks/:parkId', TokenMiddleware, (req,  res) => {
 /* USER ROUTES */
 
 apiRouter.post('/users/login', (req,  res) => {
+  console.log("req.body: ", req.body)
   if(req.body.username && req.body.password) {
     UserDAO.getUserByCredentials(req.body.username, req.body.password).then(user => {
       let result = {
         user: user
       }
 
+      console.log("APIRoutes - User: ", user);
       generateToken(req, res, user);
 
       res.json(result);
     }).catch(err => {
+      console.log(":(((((((((((((((((((", user);
       console.log(err);
       res.status(err.code).json({error: err.message});
     });
@@ -139,18 +142,19 @@ apiRouter.post('/users/login', (req,  res) => {
   }
 });
 
-apiRouter.post('/users/logout', (req,  res) => {
+apiRouter.post('/users/logout', (req, res) => {
   removeToken(req, res);
 
   res.json({success: true});
 });
 
 
-apiRouter.get('/users/current', TokenMiddleware, (req,  res) => {
+apiRouter.get('/users/current', TokenMiddleware, (req, res) => {
+  console.log("/users/current - req.user: ", req.user);
   res.json(req.user);
 });
 
-apiRouter.get('/users/current/parks', TokenMiddleware, (req,  res) => {
+apiRouter.get('/users/current/parks', TokenMiddleware, (req, res) => {
   res.status(501).json({error: 'Not implemented'});
 });
 

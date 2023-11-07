@@ -50,7 +50,7 @@ exports.TokenMiddleware = (req, res, next) => {
     const base64header = base64url.encode(JSON.stringify(header));
     const base64payload = base64url.encode(JSON.stringify(data));
     // const combinedPayload = base64url.encode(JSON.stringify(header)) + "." + base64url.encode(JSON.stringify(data));
-    const calculatedSignature = hmac.update(base64header + "." + base64payload).digest('hex');
+    const calculatedSignature = crypto.createHmac('sha256', API_SECRET).update(base64header + "." + base64payload).digest('hex');
     if (hmacSignature !== calculatedSignature) {
       throw new Error('Invalid token signature');
     }
@@ -61,6 +61,7 @@ exports.TokenMiddleware = (req, res, next) => {
     next(); //Make sure we call the next middleware
   }
   catch(err) { //Token is invalid
+    console.log(":(((((((((((((((((((", err)
     res.status(401).json({error: 'Not authenticated'});
     return;
   }
@@ -87,6 +88,7 @@ exports.generateToken = (req, res, user) => {
   const hmacSignature = crypto.createHmac('sha256', API_SECRET).update(base64header + "." + base64payload).digest('hex');
   const token = base64header + "." + base64payload + "." + hmacSignature;
 
+  console.log("Token: ", token);
   //send token in cookie to client
   res.cookie(TOKEN_COOKIE_NAME, token, {
     httpOnly: true,

@@ -25,6 +25,7 @@ if(localStorage.getItem(DARK_MODE_KEY) === "1") {
 import api from './APIClient.js';
 
 api.getCurrentUser().then(user => {
+  console.log("User: ", user);
   let link = document.createElement('a');
   link.href = '#';
   link.innerHTML = "Log Out";
@@ -35,6 +36,7 @@ api.getCurrentUser().then(user => {
     });
   })
 
+  // look into this
   document.getElementById('user').innerHTML = `${user.first_name} ${user.last_name} (${user.username}) `;
   document.getElementById('user').appendChild(document.createElement('br'));
   document.getElementById('user').appendChild(link);
