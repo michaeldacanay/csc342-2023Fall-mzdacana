@@ -9,10 +9,6 @@ const PORT = 80;  // Port number we want to use of this server
 
 const html_dir = __dirname + '/templates/';
 
-// Prepend /hw3 to all routes
-// const router = express.Router();
-// app.use('/hw3', router);
-
 // Set up Middleware
 
 // Configure hbs as the template engine

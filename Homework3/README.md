@@ -12,6 +12,7 @@ Changelog:
 - email format validation on backend in server.js
 - use toLowerCase() to block stu dent and other variations in capitalization
 - revise error page to display err message and redirect payment to stu dent to error.hbs
+- update absolute paths to relative paths so that application works as expected on /hw3/ path
 
 Feedback:
 
