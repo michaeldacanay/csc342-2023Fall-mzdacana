@@ -8,8 +8,8 @@ const TOKEN_COOKIE_NAME = "NCParksToken";
 const API_SECRET = "60d0954e20eaa0c02b382171c33c53bc18522cc6d4805eaa02e182b0";
 
 // Create an HMAC instance with the specified algorithm (e.g., 'sha256')
-const algorithm = 'sha256';
-const hmac = crypto.createHmac(algorithm, API_SECRET);
+// const algorithm = 'sha256';
+// const hmac = crypto.createHmac(algorithm, API_SECRET);
 
 exports.TokenMiddleware = (req, res, next) => {
   // We will look for the token in two places:
