@@ -23,24 +23,17 @@ services:
     build:
       context: ./Homework3  # Set the build context to the Homework3 directory
       dockerfile: Dockerfile
-    image: hw3-express-app  # Specify the desired image name
-    # ports:
-    #   - "3000:80" # Map the container's port to the host machine
     restart: unless-stopped
 
   hw4:
     build:
       context: ./Homework4  # Set the build context to the Homework3 directory
       dockerfile: Dockerfile
-    image: hw4-express-app  # Specify the desired image name
     restart: unless-stopped
-    
+
   hw5:
     build:
       context: ./Homework5
       dockerfile: Dockerfile
-    # env_file:
-    #   - .env
-    image: hw5-app
     restart: unless-stopped
 
