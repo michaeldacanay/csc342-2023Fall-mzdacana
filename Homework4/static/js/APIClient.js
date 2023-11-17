@@ -18,21 +18,40 @@ class HTTPClient {
 
   static post(url, data) {
     // TODO: Implement
+    return fetch(`${API_BASE}${url}`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => {
+
+    });
   }
 };
 
 export default {
-  getCounties: () => {
-    return HTTPClient.get('/counties');
+  // TODO: Implement
+  // get howls
+  getHowlsByUser: (userId) => {
+    return HTTPClient.get(`/users/${userId}/howls`);
   },
 
-  getParksByCounty: (county) => {
-    return HTTPClient.get(`/counties/${county}/parks`);
+  getHowlsByUserFollowing: (userId) => {
+    return HTTPClient.get(`/users/${userId}/following/howls`);
   },
 
-  getParkById: (id) => {
-    return HTTPClient.get(`/parks/${id}`);
-  },
+  // getCounties: () => {
+  //   return HTTPClient.get('/counties');
+  // },
+
+  // getParksByCounty: (county) => {
+  //   return HTTPClient.get(`/counties/${county}/parks`);
+  // },
+
+  // getParkById: (id) => {
+  //   return HTTPClient.get(`/parks/${id}`);
+  // },
 
   getCurrentUser: () => {
     return HTTPClient.get('/users/current');

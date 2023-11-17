@@ -1,77 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Howler | My Feed</title>
-    <link href="../static/css/main.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous" defer></script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Howler | My Feed</title>
+  <link href="css/main.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous" defer></script>
+  <link rel="icon" href="images/howler.jpeg" type="image/jpeg">
 </head>
 <body>
-    <!-- <div class="container">
-       
-        <h1>Howler</h1>
-        <div class="container">
-            <h6>@student</h6>
-            <img src="https://robohash.org/veniamdoloresenim.png?size=64x64&set=set1" />
-        </div>
-    </div> -->
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h1>Howler</h1>
-            </div>
-            <div class="col-12 text-center row-flex-container">
-                <h6>@student</h6>
-                <img src="https://robohash.org/veniamdoloresenim.png?size=64x64&set=set1" />
-            </div>
-        </div>
-        
-        <div class="row mt-4">
-            <div class="col-12">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="What's howling?" aria-label="What's howling?" aria-describedby="howl-button">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="howl-button">Howl</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="row mt-4">
-            <div class="col-12">
-                <div class="card mb-2">
-                    <div class="card-body">
-                        <h5 class="card-title">@student1</h5>
-                        <p class="card-text">testing1</p>
-                    </div>
-                </div>
-    
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">@student2</h5>
-                        <p class="card-text">testing2</p>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        <!-- <main id="maincontent">
-            <div id="map"><img src="/img/ncparkmap.png"></div>
-            <section>
-              <div class="filter-options">
-                <h2>Filter Results</h2>
-                <select id="counties-select" name="county">
-                  <option value="all">All Counties</option>
-                </select>
-              </div>
-              <div id="parks-list"></div>
-            </section>
-          </main> -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary mb-3">
+    <div class="container-fluid row justify-content-end">
+      <div class="col-4 d-flex align-items-center gap-2 justify-content-center">
+        <img src="images/howler.jpeg" alt="howler logo" class="img-fluid rounded-circle" width="50px" height="50px">
+        <a class="navbar-brand" href="./">Howler</a>
+      </div>
+      <div class="col-4 d-flex align-items-center gap-1 justify-content-end">
+        <div>@student</div>
+        <img src="images/user_profile.png" class="img-fluid rounded profile" alt="profile image">
+      </div>
     </div>
-    
-    <script src="/js/home.js" type="module"></script>
+  </nav>
+
+  <div class="container d-flex flex-column align-items-center">
+    <div class="col-12 col-xl-5 col-lg-6 col-md-8">
+      <div class="card mx-2 mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Post a Howl</h5>
+          <div class="form-floating my-3">
+            <textarea class="form-control" placeholder="What's howling?" id="floatingTextarea" style="height: 100px"></textarea>
+            <label for="floatingTextarea">What's howling?</label>
+          </div>
+          <a href="./" class="btn btn-primary">Howl</a>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header d-flex align-items-center gap-2">
+          <img src="images/user_profile.png" class="img-fluid rounded profile" alt="profile image">
+          <div class="fw-bold"> Stu Dent</div>
+          <div class="text-muted me-auto">@student</div>
+          <div class="p2">Oct 1, 10:30pm</div>
+        </div>
+        <div class="card-body">
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/home.js" type="module"></script>
 </body>
 </html>

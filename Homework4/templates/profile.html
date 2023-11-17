@@ -1,11 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <link href="css/main.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous" defer></script>
+  <link rel="icon" href="images/howler.jpeg" type="image/jpeg">
 </head>
 <body>
-    
+  <nav class="navbar navbar-expand-lg bg-body-tertiary mb-3">
+    <div class="container-fluid row justify-content-end">
+      <div class="col-4 d-flex align-items-center gap-2 justify-content-center">
+        <img src="images/howler.jpeg" alt="howler logo" class="img-fluid rounded-circle" width="50px" height="50px">
+        <a class="navbar-brand" href="./">Howler</a>
+      </div>
+      <div class="col-4 d-flex align-items-center gap-1 justify-content-end">
+        <div>@student</div>
+        <img src="images/user_profile.png" class="img-fluid rounded profile" alt="profile image">
+      </div>
+    </div>
+  </nav>
+
+  <div class="container d-flex flex-column align-items-center">
+    <div class="col-12 col-xl-5 col-lg-6 col-md-8">
+      <div class="card mx-2 mb-3">
+        <div class="card-body d-flex gap-2">
+          <img src="images/user_profile.png" class="img-fluid rounded profile" alt="profile image">
+          <div class="d-flex flex-column gap-1 me-auto">
+            <div class="fw-bold">Stu Dent</div>
+            <div class="text-muted">@student</div>
+          </div>
+          <button type="button" class="btn btn-dark">Follow</button>
+          
+        </div>
+      </div>
+
+      <div class="card bg-secondary-subtle">
+        <div class="card-header">Follows:</div>
+        <div class="card-body d-flex align-items-center gap-2">
+          <img src="images/user_profile.png" class="img-fluid rounded profile" alt="profile image">
+          <div class="fw-bold"> Stu Dent</div>
+          <div class="text-muted me-auto">@student</div>
+        </div>
+      </div>
+      
+      <h1>Howls</h1>
+      <div class="card">
+        <div class="card-header d-flex align-items-center gap-2">
+          <img src="images/user_profile.png" class="img-fluid rounded profile" alt="profile image">
+          <div class="fw-bold"> Stu Dent</div>
+          <div class="text-muted me-auto">@student</div>
+          <div class="p2">Oct 1, 10:30pm</div>
+        </div>
+        <div class="card-body">
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/home.js" type="module"></script>
 </body>
 </html>

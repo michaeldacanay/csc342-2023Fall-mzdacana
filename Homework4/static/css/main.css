@@ -15,3 +15,12 @@ h1 {
     justify-content: center; /* center items horizontally */
     align-items: center;
 }
+
+img.profile {
+    height: 40px;
+    width: 40px;
+}
+
+img.profile:hover {
+    cursor: pointer;
+}
