@@ -1,38 +1,27 @@
 import api from './APIClient.js';
 
-// Step 1. Set constant for the selected county key
-const SELECTED_COUNTY_KEY = 'selectedCounty';
+const howlsList = document.getElementById('howls-list');
 
-const countiesSelect = document.querySelector('#counties-select');
-countiesSelect.addEventListener('change', e => {
-  // Step 2. Save the selected county to local storage
-  localStorage.setItem(SELECTED_COUNTY_KEY, e.target.value);
-  updateParks()
-});
-
-
-// Step 3. Get the selected county from local storage
-const storageCounty = localStorage.getItem(SELECTED_COUNTY_KEY);
-
-api.getCounties().then(counties => {
-  counties.forEach(county => {
-    const option = document.createElement('option');
-    option.innerHTML = county;
-    option.value = county;
-    // Step 4. Set the selected county in the select element
-    if(county == storageCounty) {
-      option.selected = true;
-    }
-    countiesSelect.append(option);
+document.addEventListener('DOMContentLoaded', () => {
+  api.getHowlsByUserFollowing('1').then(howls => {
+    console.log("From the server:", howls);
+    howls.forEach(howl => {
+      const item = document.createElement('li');
+      item.innerHTML = howl.text;
+      howlsList.appendChild(item);
+    });
   });
-  updateParks();
+
+  
 });
 
 
-function updateParks() {
-  const cIndex = countiesSelect.selectedIndex;
-  const county = countiesSelect[cIndex].value;
-  api.getParksByCounty(county).then(parks => {
+
+
+
+
+function updateHowls(userId) {
+  api.getHowlsByUserFollowing(userId).then(howls => {
     resetParks();
     fillParksHTML(parks);
   });
@@ -56,6 +45,9 @@ function fillParksHTML(parks) {
   });
 
 }
+
+
+
 
 /**
  * Create park HTML.
