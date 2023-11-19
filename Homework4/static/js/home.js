@@ -1,14 +1,23 @@
 import api from './APIClient.js';
 
-const howlsList = document.getElementById('howls-list');
+const howlsList = document.querySelector('.howls-list');
 
 document.addEventListener('DOMContentLoaded', () => {
   api.getHowlsByUserFollowing('1').then(howls => {
     console.log("From the server:", howls);
+    console.log(typeof(howls)); // object
+    
     howls.forEach(howl => {
-      const item = document.createElement('li');
-      item.innerHTML = howl.text;
-      howlsList.appendChild(item);
+      console.log('howl: ', howl)
+      // howl.userId  with this we can get the user info: username, 
+      api.getUserById(howl.userId).then(user => {
+        console.log('user: ', user);
+        howlsList.append(createHowlHTML(user, howl));
+      });
+      // let card = createHowlHTML(howl);
+      // console.log(card);
+      // howlsList.appendChild(howl);
+      
     });
   });
 
@@ -16,66 +25,99 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+function formatTimestamp(timestamp) {
+  const date = new Date(timestamp);
+
+  const options = {
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true
+  };
+
+  return date.toLocaleString('en-US', options);
+}
 
 
 
 
 function updateHowls(userId) {
   api.getHowlsByUserFollowing(userId).then(howls => {
-    resetParks();
-    fillParksHTML(parks);
+    resetHowls();
+    fillHowlsHTML(howls);
   });
 }
 
 /**
- * Clear current parks
+ * Clear current howls
  */
-function resetParks(parks) {
-  const parkList = document.getElementById('parks-list');
-  parkList.innerHTML = '';
+function resetHowls() {
+  howlsList.innerHTML = '';
 }
 
 /**
- * Create all parks HTML and add them to the webpage.
+ * Create all howls HTML and add them to the webpage.
  */
-function fillParksHTML(parks) {
-  const parkList = document.getElementById('parks-list');
-  parks.forEach(park => {
-    parkList.append(createParkHTML(park));
+function fillHowlsHTML(howls) {
+  howls.forEach(howl => {
+    howlsList.append(createHowlHTML(howl));
   });
-
 }
 
-
-
-
 /**
- * Create park HTML.
+ * Create howl HTML.
  */
-function createParkHTML(park) {
-  const item = document.createElement('a');
-  item.classList.add('park');
-  item.href = '/park?id=' + park.id;
+function createHowlHTML(user, howl) {
+  // Create the main card container
+  const card = document.createElement('div');
+  card.classList.add('card', 'mb-3');
 
-  const name = document.createElement('h2');
-  name.innerHTML = park.name;
-  item.appendChild(name);
+  // Create the card header
+  const cardHeader = document.createElement('div');
+  cardHeader.classList.add('card-header', 'd-flex', 'align-items-center', 'gap-2');
+  card.appendChild(cardHeader);
 
-  const img = document.createElement('img');
-  img.src = "/img/park.jpg";
-  item.appendChild(img);
+  // Create the profile image link
+  const profileImageLink = document.createElement('a');
+  profileImageLink.href = './profile';
+  cardHeader.appendChild(profileImageLink);
 
-  const countyLabel = document.createElement('div');
-  countyLabel.innerHTML = 'Spans Counties:';
-  countyLabel.classList.add('counties-list');
-  item.appendChild(countyLabel);
+  // Create the profile image
+  const profileImage = document.createElement('img');
+  profileImage.src = user.avatar || 'images/user_profile.png';
+  profileImage.classList.add('img-fluid', 'rounded', 'profile');
+  profileImage.alt = 'profile image';
+  profileImageLink.appendChild(profileImage);
 
-  park.county.forEach(county => {
-    const countyTag = document.createElement('span');
-    countyTag.classList.add('county');
-    countyTag.innerHTML = county;
-    item.appendChild(countyTag);
-  });
+  // Create the user name
+  const userName = document.createElement('div');
+  userName.classList.add('fw-bold');
+  userName.innerHTML = user.first_name + ' ' + user.last_name;
+  cardHeader.appendChild(userName);
 
-  return item;
+  // Create the username with a muted text
+  const usernameText = document.createElement('div');
+  usernameText.classList.add('text-muted', 'me-auto');
+  usernameText.innerHTML = '@' + user.username;
+  cardHeader.appendChild(usernameText);
+
+  // Create the timestamp
+  const timestamp = document.createElement('div');
+  timestamp.classList.add('p2');
+  timestamp.innerHTML = formatTimestamp(howl.datetime);
+  cardHeader.appendChild(timestamp);
+
+  // Create the card body
+  const cardBody = document.createElement('div');
+  cardBody.classList.add('card-body');
+  card.appendChild(cardBody);
+
+  // Create the card text
+  const cardText = document.createElement('p');
+  cardText.classList.add('card-text');
+  cardText.innerHTML = howl.text;
+  cardBody.appendChild(cardText);
+
+  return card;
 }
