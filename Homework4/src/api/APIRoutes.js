@@ -43,18 +43,19 @@ apiRouter.get('/login/:username', (req, res) => {
 //Logout current user
 apiRouter.post('/logout', (req, res) => {
   const userId = req.body.userId;
-  // UserDAO.getUser(username).then(user => {
-  //   if(user) {
-  //     req.session.user = user;
-  //     res.json(user);
-  //   }
-  //   else {
-  //     res.status(404).json({error: 'User not found'});
-  //   }
-  // })
-  // .catch(err => {
-  //   res.status(500).json({error: 'Internal server error'});
-  // });
+  console.log('logout userId: ', userId);
+  UserDAO.getUserById(userId).then(user => {
+    if(user) {
+      req.session.user = null;
+      res.json(user);
+    }
+    else {
+      res.status(404).json({error: 'User not found'});
+    }
+  })
+  .catch(err => {
+    res.status(500).json({error: 'Internal server error'});
+  });
 });
 
 //Get all follows

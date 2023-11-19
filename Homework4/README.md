@@ -6,3 +6,10 @@ I faced a challenge in understanding the routes, data access objects, etc. There
 2. What additional feature would you add to Howler, and how would you suggest it should be implemented?  
 Probably adding features like deleting howls, creating new users, etc.
 
+
+## Changelog
+
+- Update bootstrap pages: home, profile, login
+- install middleware to track cookies/sessions
+- connect frontend to backend with APIClient
+
