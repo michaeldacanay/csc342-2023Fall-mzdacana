@@ -14,14 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('user: ', user);
         howlsList.append(createHowlHTML(user, howl));
       });
-      // let card = createHowlHTML(howl);
-      // console.log(card);
-      // howlsList.appendChild(howl);
       
     });
   });
 
-  
 });
 
 

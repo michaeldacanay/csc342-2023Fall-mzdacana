@@ -24,6 +24,7 @@ module.exports = {
     getUser: (username) => {
         return new Promise((resolve, reject) => {
             const user = users.find(user => user.username == username);
+            console.log('UserDAO: getUser', user)
             if(user) {
                 resolve(user);
             }

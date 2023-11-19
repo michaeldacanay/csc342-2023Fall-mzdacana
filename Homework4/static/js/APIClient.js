@@ -45,6 +45,10 @@ export default {
     return HTTPClient.get(`/users/${userId}`);
   },
 
+  login: (username) => {
+    return HTTPClient.post('/users/login', {username: username});
+  },
+
   getCurrentUser: () => {
     return HTTPClient.get('/users/current');
   },

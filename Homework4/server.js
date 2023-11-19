@@ -7,23 +7,16 @@ const PORT = 80;
 app.use(express.static('static'));
 app.use(express.urlencoded({extended: true}));
 
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
+// const session = require('express-session');
+const sessionCookieMiddleware = require('./src/middleware/sessionCookieMiddleware');
+app.use(sessionCookieMiddleware);
+
 
 const routes = require('./src/routes');
 app.use(routes)
-
-// const html_dir = __dirname + '/templates/';
-
-// app.get('/', (req, res) => {
-//   res.sendFile(`${html_dir}index.html`);
-// });
-
-// app.get('/park', (req, res) => {
-//   res.sendFile(`${html_dir}park.html`);
-// });
-
-// app.get('/error', (req, res) => {
-//   res.sendFile(`${html_dir}error.html`);
-// });
 
 // As our server to listen for incoming connections
 app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`));
