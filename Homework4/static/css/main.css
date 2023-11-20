@@ -19,6 +19,9 @@ h1 {
 img.profile {
     height: 40px;
     width: 40px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    overflow: hidden;
 }
 
 img.profile:hover {

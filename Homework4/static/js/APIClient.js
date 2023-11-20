@@ -53,7 +53,7 @@ export default {
 
   logout: (username) => {
     return HTTPClient.post('/logout');
-  }
+  },
 
   getCurrentUser: () => {
     return HTTPClient.get('/users/current');

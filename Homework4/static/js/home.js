@@ -1,21 +1,44 @@
 import api from './APIClient.js';
 
 const howlsList = document.querySelector('.howls-list');
+let currentUser = null;
+
+const usernameText = document.querySelector('.username-text');
+const profileImage = document.querySelector('img.profile');
+const profileImageLink = document.querySelector('a.profile');
 
 document.addEventListener('DOMContentLoaded', () => {
-  api.getHowlsByUserFollowing('1').then(howls => {
-    console.log("From the server:", howls);
-    console.log(typeof(howls)); // object
+  api.getCurrentUser().then(user => {
+    console.log('home.js getCurrentUser: ', user)
+    if (!user) {
+      window.location.href = './login';
+    }
     
-    howls.forEach(howl => {
-      console.log('howl: ', howl)
-      // howl.userId  with this we can get the user info: username, 
-      api.getUserById(howl.userId).then(user => {
-        console.log('user: ', user);
-        howlsList.append(createHowlHTML(user, howl));
-      });
+    // updateHowls(user.id);
+    currentUser = user;
+    console.log('home.js getCurrentUser: ', currentUser);
+    usernameText.innerHTML = '@' + currentUser.username;
+    profileImage.src = currentUser.avatar || 'images/user_profile.png';
+    profileImageLink.href = './profile?userId=' + currentUser.id;
+
+  
+    api.getHowlsByUserFollowing(currentUser.id).then(howls => {
+      console.log("From the server:", howls);
+      console.log(typeof(howls)); // object
       
+      howls.forEach(howl => {
+        console.log('howl: ', howl)
+        // howl.userId  with this we can get the user info: username, 
+        api.getUserById(howl.userId).then(user => {
+          console.log('user: ', user);
+          howlsList.append(createHowlHTML(user, howl));
+        });
+        
+      });
     });
+  }).catch(error => {
+    console.log('home.js getCurrentUser error: ', error)
+    window.location.href = './login';
   });
 
 });
@@ -76,13 +99,13 @@ function createHowlHTML(user, howl) {
 
   // Create the profile image link
   const profileImageLink = document.createElement('a');
-  profileImageLink.href = './profile';
+  profileImageLink.href = './profile?userId=' + user.id;
   cardHeader.appendChild(profileImageLink);
 
   // Create the profile image
   const profileImage = document.createElement('img');
   profileImage.src = user.avatar || 'images/user_profile.png';
-  profileImage.classList.add('img-fluid', 'rounded', 'profile');
+  profileImage.classList.add('img-fluid', 'rounded-circle', 'profile');
   profileImage.alt = 'profile image';
   profileImageLink.appendChild(profileImage);
 
