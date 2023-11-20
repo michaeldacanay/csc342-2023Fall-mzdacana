@@ -16,6 +16,7 @@ const logoutBtn = document.querySelector('button.logout');
 const followBtn = document.querySelector('button.follow');
 
 const howlsList = document.querySelector('.howls-list');
+const followsList = document.querySelector('.follows-list');
 
 // let currentUser = null;
 
@@ -40,12 +41,25 @@ document.addEventListener('DOMContentLoaded', () => {
     
   });
 
-  // Get user info e.g. username, avatar
+  // Get user info e.g. username, avatar (based on userId from query string)
   api.getUserById(userId).then(user => {
     console.log('Profile user: ', user);
+    // Main info for userId
     userName.innerHTML = user.first_name + ' ' + user.last_name;
     userUsername.innerHTML = '@' + user.username;
     userProfileImage.src = user.avatar || 'images/user_profile.png';
+
+    // Get users followed by userId
+    api.getUsersFollowedByUserId(userId).then(userIds => {
+      console.log('Profile userIds: ', userIds);
+      userIds.forEach(userId => {
+        // Get user info for each userId
+        api.getUserById(userId).then(user => {
+          console.log('Profile user: ', user);
+          followsList.append(createFollowHTML(user));
+        });
+      });
+    });
 
     // Get howls for userId
     api.getHowlsByUser(userId).then(howls => {
@@ -131,4 +145,39 @@ function createHowlHTML(user, howl) {
   cardBody.appendChild(cardText);
 
   return card;
+}
+
+/**
+ * Create follow HTML.
+ */
+function createFollowHTML(user) {
+  // Create the card body container
+  const cardBody = document.createElement('div');
+  cardBody.classList.add('card-body', 'd-flex', 'align-items-center', 'gap-2');
+
+  // Create the profile image link
+  const profileImageLink = document.createElement('a');
+  profileImageLink.href = './profile?userId=' + user.id;
+  cardBody.appendChild(profileImageLink);
+
+  // Create the profile image
+  const profileImage = document.createElement('img');
+  profileImage.src = user.avatar || 'images/user_profile.png';
+  profileImage.classList.add('img-fluid', 'rounded-circle', 'profile');
+  profileImage.alt = 'profile image';
+  profileImageLink.appendChild(profileImage);
+
+  // Create the user name
+  const userName = document.createElement('div');
+  userName.classList.add('fw-bold');
+  userName.innerHTML = user.first_name + ' ' + user.last_name;
+  cardBody.appendChild(userName);
+
+  // Create the username with a muted text
+  const usernameText = document.createElement('div');
+  usernameText.classList.add('text-muted', 'me-auto');
+  usernameText.innerHTML = '@' + user.username;
+  cardBody.appendChild(usernameText);
+
+  return cardBody;
 }

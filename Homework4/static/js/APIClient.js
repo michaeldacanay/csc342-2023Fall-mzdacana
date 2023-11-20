@@ -40,6 +40,11 @@ export default {
     return HTTPClient.get(`/users/${userId}/following/howls`);
   },
 
+  getUsersFollowedByUserId: (userId) => {
+    console.log("APIClient: getFollowsByUserId");
+    return HTTPClient.get(`/users/${userId}/following`);
+  },
+
   getUserById: (userId) => {
     console.log("APIClient: getUserById");
     return HTTPClient.get(`/users/${userId}`);
