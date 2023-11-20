@@ -8,6 +8,7 @@ const userId = parseInt(parameters.get('userId'));
 
 const usernameText = document.querySelector('.username-text');
 const profileImage = document.querySelector('img#current-user-profile');
+const profileImageLink = document.querySelector('.profile-image-link');
 
 const userName = document.querySelector('div.user-name');
 const userUsername = document.querySelector('div.user-username');
@@ -36,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     currentUser = user;
     usernameText.innerHTML = '@' + user.username;
     profileImage.src = user.avatar || 'images/user_profile.png';
+    profileImageLink.href = './profile?userId=' + user.id;
 
 
     // 3 scenarios: 1. userId in URL query string is currentUser
