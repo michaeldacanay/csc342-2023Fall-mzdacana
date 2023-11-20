@@ -10,6 +10,7 @@ Probably adding features like deleting howls, creating new users, etc.
 ## Changelog
 
 - Update bootstrap pages: home, profile, login
-- install middleware to track cookies/sessions
+- install middleware to track cookies/sessions fixing auth
 - connect frontend to backend with APIClient
+- create howls and follows lists dynamically via JS
 

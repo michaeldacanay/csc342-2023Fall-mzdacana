@@ -23,6 +23,7 @@ const followsList = document.querySelector('.follows-list');
 document.addEventListener('DOMContentLoaded', () => {
   api.getCurrentUser().then(user => {
     if (!user) {
+      console.log('Profile: no user');
       window.location.href = './login';
     }
     usernameText.innerHTML = '@' + user.username;
@@ -30,11 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (user.id == userId) {
       // hide the follow button if profile page is for currentUser
-      window.location.href = './';
-      // hide the logout button if profile page is not for currentUser
       logoutBtn.style.display = 'block';
       followBtn.style.display = 'none';
     } else {
+      // hide the logout button if profile page is not for currentUser
       logoutBtn.style.display = 'none';
       followBtn.style.display = 'block';
     }
