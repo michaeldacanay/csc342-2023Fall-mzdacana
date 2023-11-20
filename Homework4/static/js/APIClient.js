@@ -1,5 +1,5 @@
 // import {counties, parks} from './data.js';
-const API_BASE = '/api';
+const API_BASE = '/hw4/api';
 
 class HTTPClient {
   static get(url) {
@@ -8,6 +8,7 @@ class HTTPClient {
         if(res.ok) {
           return res.json();
         }
+        console.log('HTTPClient: get', `${API_BASE}${url}`);
         throw new Error('Network response was not ok.');
       })
       .catch(err => {

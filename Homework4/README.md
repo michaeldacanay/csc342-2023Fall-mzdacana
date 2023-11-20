@@ -9,6 +9,8 @@ With more time, I plan to add features like deleting howls that the current user
 
 ## Changelog
 
+Sun. 11/19 resubmission
+
 - Update bootstrap pages: home, profile, login
 - install middleware to track cookies/sessions fixing auth
 - connect frontend to backend with APIClient e.g. create howl functionality
