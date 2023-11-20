@@ -1,0 +1,9 @@
+img.profile {
+    height: 40px;
+    width: 40px;
+}
+
+img.profile:hover {
+    cursor: pointer;
+}
+
