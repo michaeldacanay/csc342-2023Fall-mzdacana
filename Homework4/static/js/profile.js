@@ -4,7 +4,7 @@ import api from './APIClient.js';
 // Get userId from query string
 const query = window.location.search;
 let parameters = new URLSearchParams(query);
-const userId = parameters.get('userId');
+const userId = parseInt(parameters.get('userId'));
 
 const usernameText = document.querySelector('.username-text');
 const profileImage = document.querySelector('img#current-user-profile');
@@ -123,8 +123,9 @@ followBtn.addEventListener('click', () => {
 });
 
 unfollowBtn.addEventListener('click', () => {
-  api.unfollow(currentUser.id, userId).then(() => {
-    console.log('unfollowBtn: ', userId);
+  api.unfollow(currentUser.id, userId).then(data => {
+    console.log('response data unfollow', data);
+    console.log('unfollowBtn: ', currentUser.id, userId);
     window.location.reload();
   });
 });

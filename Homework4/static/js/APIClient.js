@@ -76,8 +76,8 @@ export default {
   },
 
   unfollow: (userId, followingId) => {
-    console.log("APIClient: unfollow");
-    return HTTPClient.post(`/unfollowing`, {userId: userId, followingId: followingId});
+    console.log("APIClient: unfollow", userId, followingId);
+    return HTTPClient.post('/unfollowing', {userId: userId, followingId: followingId});
   },
 };
 

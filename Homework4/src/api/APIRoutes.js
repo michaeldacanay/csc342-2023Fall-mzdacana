@@ -235,7 +235,7 @@ apiRouter.post('/following', (req, res) => {
 });
 
 //Unfollowing a user
-apiRouter.put('/unfollowing', (req, res) => {
+apiRouter.post('/unfollowing', (req, res) => {
   let userId = req.body.userId;
   let followingId = req.body.followingId;
   FollowDAO.deleteFollow(userId, followingId).then(follow => {
@@ -247,27 +247,6 @@ apiRouter.put('/unfollowing', (req, res) => {
 });
 
 
-//Update a county
-apiRouter.put('/counties/:county', (req,  res) => {
-  res.status(501).json({error: 'Not implemented'});
-});
-//Update a park
-apiRouter.put('/parks/:parkId', (req,  res) => {
-  res.status(501).json({error: 'Not implemented'});
-});
-
-//Delete a county
-apiRouter.delete('/counties/:county', (req,  res) => {
-  res.status(501).json({error: 'Not implemented'});
-});
-//Delete a park
-apiRouter.delete('/parks/:parkId', (req,  res) => {
-  res.status(501).json({error: 'Not implemented'});
-});
-
-
-
-
 
 apiRouter.get('/users/current', (req,  res) => {
   if(req.session.user) {
@@ -277,18 +256,5 @@ apiRouter.get('/users/current', (req,  res) => {
     res.status(401).json({error: 'Not authenticated'});
   }
 });
-
-apiRouter.get('/users/current/parks', (req,  res) => {
-  if(req.session.user) {
-    res.json(req.session.visitedParks);
-  }
-  else {
-    res.status(401).json({error: 'Not authenticated'});
-  }
-});
-
-
-
-
 
 module.exports = apiRouter;
