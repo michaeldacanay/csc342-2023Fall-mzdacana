@@ -11,6 +11,7 @@ Probably adding features like deleting howls, creating new users, etc.
 
 - Update bootstrap pages: home, profile, login
 - install middleware to track cookies/sessions fixing auth
-- connect frontend to backend with APIClient
-- create howls and follows lists dynamically via JS
+- connect frontend to backend with APIClient e.g. create howl functionality
+- display howls and follows lists dynamically via JS
+- display profile page dynamically based on URL
 

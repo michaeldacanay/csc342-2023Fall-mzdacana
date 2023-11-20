@@ -7,6 +7,9 @@ const usernameText = document.querySelector('.username-text');
 const profileImage = document.querySelector('img.profile');
 const profileImageLink = document.querySelector('a.profile');
 
+const howlTextarea = document.querySelector('#create-howl-textarea');
+const createHowlBtn = document.querySelector('button.create-howl');
+
 document.addEventListener('DOMContentLoaded', () => {
   api.getCurrentUser().then(user => {
     console.log('home.js getCurrentUser: ', user)
@@ -41,6 +44,18 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location.href = './login';
   });
 
+});
+
+
+createHowlBtn.addEventListener('click', () => {
+  const howlText = howlTextarea.value;
+  console.log('createHowlBtn: ', howlText);
+  api.createHowl(currentUser.id, howlText).then(howl => {
+    console.log('createHowl: ', howl);
+    // updateHowls(currentUser.id);
+    // howlsList.prepend(createHowlHTML(currentUser, howl));
+    howlTextarea.value = '';
+  });
 });
 
 

@@ -14,31 +14,67 @@ const userUsername = document.querySelector('div.user-username');
 const userProfileImage = document.querySelector('img.user-profile');
 const logoutBtn = document.querySelector('button.logout');
 const followBtn = document.querySelector('button.follow');
+const unfollowBtn = document.querySelector('button.unfollow');
+// logoutBtn.style.display = 'none';
+// followBtn.style.display = 'none';
+// unfollowBtn.style.display = 'none';
 
 const howlsList = document.querySelector('.howls-list');
 const followsList = document.querySelector('.follows-list');
 
-// let currentUser = null;
+let currentUser = null;
 
 document.addEventListener('DOMContentLoaded', () => {
+  console.log('************************')
   api.getCurrentUser().then(user => {
+    console.log('Profile: getCurrentUser: ', user)
+    
     if (!user) {
       console.log('Profile: no user');
       window.location.href = './login';
     }
+    currentUser = user;
     usernameText.innerHTML = '@' + user.username;
     profileImage.src = user.avatar || 'images/user_profile.png';
 
+
+    // 3 scenarios: 1. userId in URL query string is currentUser
+    //              2. userId is user that currentUser follows
+    //              3. userId is user that currentUser does not follow
+
     if (user.id == userId) {
-      // hide the follow button if profile page is for currentUser
+      // scenario 1: userId is currentUser
       logoutBtn.style.display = 'block';
       followBtn.style.display = 'none';
+      unfollowBtn.style.display = 'none';
     } else {
-      // hide the logout button if profile page is not for currentUser
       logoutBtn.style.display = 'none';
-      followBtn.style.display = 'block';
+      
+      
+      api.getUsersFollowedByUserId(user.id).then(userIds => {
+        // const userIds = data['following'];
+        // console.log('Profile data: ', data)
+        console.log('Profile userIds: ', userIds);
+        console.log('Profile userId: ', userId);
+        console.log('Profile userIds.includes(userId): ', userIds.includes(userId));
+
+        if (userIds.includes(parseInt(userId))) {
+          // scenario 2: userId is user that currentUser follows
+          // followBtn.innerHTML = 'Unfollow';
+          followBtn.style.display = 'none';
+          unfollowBtn.style.display = 'block';
+        } else {
+          // scenario 3: userId is user that currentUser does not follow
+          // followBtn.innerHTML = 'Follow';
+          followBtn.style.display = 'block';
+          unfollowBtn.style.display = 'none';
+        }
+      });
     }
     
+  }).catch(error => {
+    console.log('Profile: getCurrentUser error: ', error)
+    window.location.href = './login';
   });
 
   // Get user info e.g. username, avatar (based on userId from query string)
@@ -51,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Get users followed by userId
     api.getUsersFollowedByUserId(userId).then(userIds => {
-      console.log('Profile userIds: ', userIds);
       userIds.forEach(userId => {
         // Get user info for each userId
         api.getUserById(userId).then(user => {
@@ -65,12 +100,32 @@ document.addEventListener('DOMContentLoaded', () => {
     api.getHowlsByUser(userId).then(howls => {
       
       howls.forEach(howl => {
-        console.log('Profile howl: ', howl)
+        // console.log('Profile howl: ', howl)
         // howl.userId  with this we can get the user info: username, 
         howlsList.append(createHowlHTML(user, howl));
         
       });
     });
+  });
+});
+
+
+logoutBtn.addEventListener('click', () => {
+  api.logout(currentUser.id).then(() => {
+    window.location.href = './login';
+  });
+});
+
+followBtn.addEventListener('click', () => {
+  api.follow(currentUser.id, userId).then(() => {
+    window.location.reload();
+  });
+});
+
+unfollowBtn.addEventListener('click', () => {
+  api.unfollow(currentUser.id, userId).then(() => {
+    console.log('unfollowBtn: ', userId);
+    window.location.reload();
   });
 });
 

@@ -30,6 +30,11 @@ class HTTPClient {
 };
 
 export default {
+  createHowl: (userId, text) => {
+    console.log("APIClient: createHowl");
+    return HTTPClient.post('/howls', {userId: userId, text: text});
+  }, 
+
   // Get howls for userId
   getHowlsByUser: (userId) => {
     return HTTPClient.get(`/users/${userId}/howls`);
@@ -56,12 +61,23 @@ export default {
     // return HTTPClient.post('/users/login', {username: username});
   },
 
-  logout: (username) => {
-    return HTTPClient.post('/logout');
+  logout: (userId) => {
+    console.log("APIClient: logout");
+    return HTTPClient.post('/logout', {userId: userId});
   },
 
   getCurrentUser: () => {
     return HTTPClient.get('/users/current');
+  },
+
+  follow: (userId, followingId) => {
+    console.log("APIClient: follow");
+    return HTTPClient.post(`/following`, {userId: userId, followingId: followingId});
+  },
+
+  unfollow: (userId, followingId) => {
+    console.log("APIClient: unfollow");
+    return HTTPClient.post(`/unfollowing`, {userId: userId, followingId: followingId});
   },
 };
 
