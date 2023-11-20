@@ -1,5 +1,5 @@
 // import {counties, parks} from './data.js';
-const API_BASE = '/hw4/api';
+const API_BASE = './api';
 
 class HTTPClient {
   static get(url) {
