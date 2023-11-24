@@ -16,9 +16,7 @@ const userProfileImage = document.querySelector('img.user-profile');
 const logoutBtn = document.querySelector('button.logout');
 const followBtn = document.querySelector('button.follow');
 const unfollowBtn = document.querySelector('button.unfollow');
-// logoutBtn.style.display = 'none';
-// followBtn.style.display = 'none';
-// unfollowBtn.style.display = 'none';
+
 
 const howlsList = document.querySelector('.howls-list');
 const followsList = document.querySelector('.follows-list');
@@ -27,6 +25,7 @@ let currentUser = null;
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('************************')
+
   api.getCurrentUser().then(user => {
     console.log('Profile: getCurrentUser: ', user)
     
@@ -100,8 +99,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Get howls for userId
     api.getHowlsByUser(userId).then(howls => {
+      // Custom sort function to compare Date objects
+      const compareDates = (a, b) => new Date(b.datetime) - new Date(a.datetime);
+
+      const sortedHowls = howls.sort(compareDates);
       
-      howls.forEach(howl => {
+      sortedHowls.forEach(howl => {
         // console.log('Profile howl: ', howl)
         // howl.userId  with this we can get the user info: username, 
         howlsList.append(createHowlHTML(user, howl));
