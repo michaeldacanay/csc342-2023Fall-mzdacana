@@ -9,6 +9,10 @@ With more time, I plan to add features like deleting howls that the current user
 
 ## Changelog
 
+Fri. 11/24 resubmission
+
+- display howls in reverse chronological order (most recent to least recent)
+
 Sun. 11/19 resubmission
 
 - Update bootstrap pages: home, profile, login
