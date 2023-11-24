@@ -1,0 +1,29 @@
+body {
+    font-family: Nunito, sans-serif;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+.row-flex-container {
+    display: flex;
+    justify-content: center; /* center items horizontally */
+    align-items: center;
+}
+
+img.profile {
+    height: 40px;
+    width: 40px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+img.profile:hover {
+    cursor: pointer;
+}
