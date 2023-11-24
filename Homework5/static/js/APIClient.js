@@ -56,10 +56,9 @@ export default {
     return HTTPClient.get(`/users/${userId}`);
   },
 
-  login: (username) => {
+  login: (username, password) => {
     console.log("APIClient: login", username);
-    return HTTPClient.get(`/login/${username}`);
-    // return HTTPClient.post('/users/login', {username: username});
+    return HTTPClient.post('/login', {username: username, password: password});
   },
 
   logout: (userId) => {

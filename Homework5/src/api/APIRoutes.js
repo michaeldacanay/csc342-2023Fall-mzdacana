@@ -1,5 +1,13 @@
 const express = require('express');
+// const cookieParser = require('cookie-parser');
+
 const apiRouter = express.Router();
+
+// apiRouter.use(cookieParser());
+apiRouter.use(express.json());
+
+const {TokenMiddleware, generateToken, removeToken} = require('../middleware/TokenMiddleware');
+
 
 
 /************\
@@ -9,10 +17,9 @@ const FollowDAO = require('./db/FollowDAO');
 const HowlDAO = require('./db/HowlDAO');
 const UserDAO = require('./db/UserDAO');
 
-apiRouter.use(express.json());
 
 //Get current authenticated user
-apiRouter.get('/users/current', (req, res) => {
+apiRouter.get('/users/current', TokenMiddleware, (req, res) => {
   if(req.session.user) {
     res.json(req.session.user);
   }
@@ -22,44 +29,79 @@ apiRouter.get('/users/current', (req, res) => {
 });
 
 //Login a user
-apiRouter.get('/login/:username', (req, res) => {
-  const username = req.params.username;
-  UserDAO.getUser(username).then(user => {
-    if(user) {
-      req.session.user = user;
-      res.json(user);
-    }
-    else {
-      res.status(404).json({error: 'User not found'});
-    }
-  })
-  .catch(err => {
-    res.status(500).json({error: 'Internal server error'});
-  });
+apiRouter.post('/login', (req, res) => {
+  console.log("req.body: ", req.body)
+  const username = req.body.username;
+  const password = req.body.password;
+  if(username && password) {
+    console.log("in here")
+    UserDAO.getUserByCredentials(username, password).then(user => {
+      let result = {
+        user: user
+      }
+
+      console.log("APIRoutes - User: ", user);
+      generateToken(req, res, user);
+
+      if(user) {
+        req.session.user = user;
+        res.json(result);
+      }
+      else {
+        res.status(404).json({error: 'User not found'});
+      }
+    })
+    .catch(err => {
+      res.status(500).json({error: 'Internal server error'});
+    });
+  } else {
+    res.status(400).json({error: 'Missing username or password'});
+  }
 });
+
+//Login a user
+// apiRouter.get('/login/:username', TokenMiddleware, (req, res) => {
+//   const username = req.params.username;
+//   UserDAO.getUser(username).then(user => {
+//     if(user) {
+//       req.session.user = user;
+//       res.json(user);
+//     }
+//     else {
+//       res.status(404).json({error: 'User not found'});
+//     }
+//   })
+//   .catch(err => {
+//     res.status(500).json({error: 'Internal server error'});
+//   });
+// });
 
 
 
 //Logout current user
 apiRouter.post('/logout', (req, res) => {
-  const userId = req.body.userId;
-  console.log('logout userId: ', userId);
-  UserDAO.getUserById(userId).then(user => {
-    if(user) {
-      req.session.user = null;
-      res.json(user);
-    }
-    else {
-      res.status(404).json({error: 'User not found'});
-    }
-  })
-  .catch(err => {
-    res.status(500).json({error: 'Internal server error'});
-  });
+  // const userId = req.body.userId;
+  // console.log('logout userId: ', userId);
+  // UserDAO.getUserById(userId).then(user => {
+  //   if(user) {
+  //     req.session.user = null;
+  //     res.json(user);
+  //   }
+  //   else {
+  //     res.status(404).json({error: 'User not found'});
+  //   }
+  // })
+  // .catch(err => {
+  //   res.status(500).json({error: 'Internal server error'});
+  // });
+  removeToken(req, res);
+  req.session.user = null;
+
+  res.json({success: true});
 });
 
 //Get all follows
-apiRouter.get('/follows', (req, res) => {
+apiRouter.get('/follows', TokenMiddleware, (req, res) => {
   FollowDAO.getFollows().then(follows => {
     res.json(follows);
   })
@@ -69,7 +111,7 @@ apiRouter.get('/follows', (req, res) => {
 });
 
 //Get all howls
-apiRouter.get('/howls', (req, res) => {
+apiRouter.get('/howls', TokenMiddleware, (req, res) => {
   HowlDAO.getHowls().then(howls => {
     res.json(howls);
   })
@@ -79,7 +121,7 @@ apiRouter.get('/howls', (req, res) => {
 });
 
 //Get all users
-apiRouter.get('/users', (req, res) => {
+apiRouter.get('/users', TokenMiddleware, (req, res) => {
   UserDAO.getUsers().then(users => {
     res.json(users);
   })
@@ -90,7 +132,7 @@ apiRouter.get('/users', (req, res) => {
 
 
 //Get specific user
-apiRouter.get('/users/:userId', (req, res) => {
+apiRouter.get('/users/:userId', TokenMiddleware, (req, res) => {
   const userId = req.params.userId;
   UserDAO.getUserById(userId).then(user => {
     if(user) {
@@ -107,7 +149,7 @@ apiRouter.get('/users/:userId', (req, res) => {
 
 
 //Get specific howl
-apiRouter.get('/howls/:howlId', (req, res) => {
+apiRouter.get('/howls/:howlId', TokenMiddleware, (req, res) => {
   const howlId = req.params.howlId;
   HowlDAO.getHowlById(howlId).then(howl => {
     if(howl) {
@@ -123,7 +165,7 @@ apiRouter.get('/howls/:howlId', (req, res) => {
 });
 
 //Get all howls posted by specific user
-apiRouter.get('/users/:userId/howls', (req, res) => {
+apiRouter.get('/users/:userId/howls', TokenMiddleware, (req, res) => {
   const userId = req.params.userId;
   console.log('userId: ', userId)
   HowlDAO.getHowlsByUserId(userId).then(howls => {
@@ -135,7 +177,7 @@ apiRouter.get('/users/:userId/howls', (req, res) => {
 });
 
 //Get howls posted by all users followed by "current" user
-apiRouter.get('/users/:userId/following/howls', (req, res) => {
+apiRouter.get('/users/:userId/following/howls', TokenMiddleware, (req, res) => {
   const userId = req.params.userId;
   console.log('/users/:userId/following/howls userId: ', userId);
 
@@ -188,7 +230,7 @@ apiRouter.get('/users/:userId/following/howls', (req, res) => {
 // });
 
 //Get all users followed by specific user
-apiRouter.get('/users/:userId/following', (req, res) => {
+apiRouter.get('/users/:userId/following', TokenMiddleware, (req, res) => {
   const userId = req.params.userId;
   FollowDAO.getFollowingByUserId(userId).then(follows => {
     res.json(follows);
@@ -200,7 +242,7 @@ apiRouter.get('/users/:userId/following', (req, res) => {
 
 
 //Create a howl
-apiRouter.post('/howls', (req, res) => {
+apiRouter.post('/howls', TokenMiddleware, (req, res) => {
   const currentDate = new Date();
   const datetimeString = currentDate.toISOString();
   console.log(datetimeString);
@@ -223,7 +265,7 @@ apiRouter.post('/howls', (req, res) => {
 });
 
 //Following a user
-apiRouter.post('/following', (req, res) => {
+apiRouter.post('/following', TokenMiddleware, (req, res) => {
   let userId = req.body.userId;
   let followingId = req.body.followingId;
   FollowDAO.createFollow(userId, followingId).then(follow => {
@@ -235,7 +277,7 @@ apiRouter.post('/following', (req, res) => {
 });
 
 //Unfollowing a user
-apiRouter.post('/unfollowing', (req, res) => {
+apiRouter.post('/unfollowing', TokenMiddleware, (req, res) => {
   let userId = req.body.userId;
   let followingId = req.body.followingId;
   FollowDAO.deleteFollow(userId, followingId).then(follow => {
@@ -248,13 +290,15 @@ apiRouter.post('/unfollowing', (req, res) => {
 
 
 
-apiRouter.get('/users/current', (req,  res) => {
-  if(req.session.user) {
-    res.json(req.session.user);
-  }
-  else {
-    res.status(401).json({error: 'Not authenticated'});
-  }
+apiRouter.get('/users/current', TokenMiddleware, (req, res) => {
+  console.log("/users/current APIRoutes.js", req.user);
+  res.json(req.user);
+  // if(req.session.user) {
+  //   res.json(req.session.user);
+  // }
+  // else {
+  //   res.status(401).json({error: 'Not authenticated'});
+  // }
 });
 
 module.exports = apiRouter;
