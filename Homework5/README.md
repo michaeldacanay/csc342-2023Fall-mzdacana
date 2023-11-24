@@ -1,4 +1,4 @@
-# Homework 4: Howler
+# Homework 5: Authentication With JWT
 
 1. An interesting challenge you encountered when implementing JWT algorithms. What was the issue and how did you solve it?  
 I faced an interesting challenge when attempting to decode the JWT token. It was a challenge because I was not familiar with the JWT format. I had to do some research to understand the format and do the initial parsing. A debugging problem I faced was for some reason, I was only able to log in once and subsequent logins would fail and automatically logout. It turns out that the mistake is I was reusing the HMAC object. Instead, I had to create a new HMAC object every time I decode the token.
