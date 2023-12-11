@@ -30,6 +30,11 @@ Fri. 11/24 resubmission
 
 Feedback:  
 
+#3
+```
+I have gone through your request for additional feedback for your 5th Homework and can see that you've made the necessary changes. Good work !
+```
+
 #2
 ```
 I have tested your app and can login and logout successfully ! However, the reused pages have not been replaced with pages you have created on your own, and this is something you can work on.
