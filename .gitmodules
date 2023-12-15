@@ -1,0 +1,3 @@
+[submodule "ScratchPad/nextjs-sandbox/Food"]
+	path = ScratchPad/nextjs-sandbox/Food
+	url = https://github.com/IdkwhatImD0ing/PantryAide/tree/main/client
